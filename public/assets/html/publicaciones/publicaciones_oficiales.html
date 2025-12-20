@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Publicaciones - Centro Multidisciplinario Meriadock</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #d9d0c1;
+        }
+
+        th {
+            background-color: #d9cbb7;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f7f2e9; /* arena clarito */
+        }
+
+        a {
+            color: #333333;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #000000;
+        }
+
+        select {
+            margin-bottom: 15px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Publicaciones</h1>
+        <p>Listado de documentos oficiales y publicaciones del Centro Multidisciplinario Meriadock Formación y Asesoría, A.C.</p>
+    </header>
+
+    <section>
+        <label for="filtroAno">Filtrar por año:</label>
+        <select id="filtroAno" onchange="filtrarAno()">
+            <option value="todos">Todos</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+        </select>
+
+        <table id="tablaPublicaciones">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Título</th>
+                    <th>Documento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ano="2025">
+                    <td>10/02/2025</td>
+                    <td></td>
+                    <td><a href="/public_html/aviso_privacidad/avisodeprivacidad.pdf" target="_blank">PDF</a></td>
+                </tr>
+                <tr data-ano="2024">
+                    <td>15/06/2024</td>
+                    <td></td>
+                    <td><a href="/public_html/informes/2024.pdf" target="_blank">PDF</a></td>
+                </tr>
+                <tr data-ano="2025">
+                    <td>05/09/2025</td>
+                    <td></td>
+                    <td><a href="/public_html/codigo_etica/codigo_etica.pdf" target="_blank">PDF</a></td>
+                </tr>
+                <!-- Puedes agregar más filas aquí -->
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Centro Multidisciplinario Meriadock Formación y Asesoría, A.C.</p>
+    </footer>
+
+    <script>
+        function filtrarAno() {
+            const filtro = document.getElementById("filtroAno").value;
+            const filas = document.querySelectorAll("#tablaPublicaciones tbody tr");
+
+            filas.forEach(fila => {
+                if (filtro === "todos" || fila.getAttribute("data-ano") === filtro) {
+                    fila.style.display = "";
+                } else {
+                    fila.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
