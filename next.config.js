@@ -15,7 +15,7 @@ const nextConfig = {
       },
       {
         source: '/codigo-conducta', // URL amigable para Código de Conducta
-        destination: 'https://drive.google.com/uc?export=view&id=2xYKaJv7890fghH1234abcdEfgh5678', // Google Drive (directo)
+        destination: 'https://drive.google.com/file/d/1Y5Rs_k7hA6lJV3v2367QdkUAAb-8BLSn/view?usp=sharing', // Google Drive (directo)
         permanent: true,
       }
       // Aquí podrías seguir añadiendo nuevos documentos con el mismo formato
