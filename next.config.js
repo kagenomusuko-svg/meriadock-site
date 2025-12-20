@@ -10,7 +10,7 @@ const nextConfig = {
       // Redirecciones de documentos
       {
         source: '/aviso-privacidad', // URL amigable en tu página
-        destination: 'https://drive.google.com/uc?export=view&id=1mKxdXj106k60bkj-gdV2Z853xdLtCjj1', // Google Drive (directo)
+        destination: 'https://drive.google.com/file/d/1mKxdXj106k60bkj-gdV2Z853xdLtCjj1/view?usp=sharing', // Google Drive (directo)
         permanent: true,
       },
       {
