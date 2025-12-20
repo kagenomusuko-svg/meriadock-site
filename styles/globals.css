@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS variables para colores institucionales */
+:root{
+  --meriadock-bg: #1E4C45;
+  --meriadock-silver: #D9D9D9;
+  --content-bg: #ffffff;
+  --content-text: #000000;
+
+  /* Offset dinámico que será actualizado desde JS según la altura real del header */
+  --header-offset: 0px;
+}
+
+html, body, #__next {
+  height: 100%;
+  background: var(--content-bg);
+  color: var(--content-text);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header específico */
+.site-header {
+  background: var(--meriadock-bg);
+  color: var(--meriadock-silver);
+}
+
+/* Limitar el tamaño del logo para evitar encabezados excesivos */
+.site-header img {
+  max-height: 56px; /* ajusta a 48/56/64 según prefieras */
+  width: auto;
+  display: block;
+}
+
+/* Footer específico */
+.site-footer {
+  background: var(--meriadock-bg);
+  color: var(--meriadock-silver);
+}
+
+/* Ajustes para el contenido principal
+   Usamos la variable --header-offset (actualizada por JS) para separar el main del header fijo.
+   Se añade una transición suave para evitar saltos visuales cuando el header cambia de tamaño. */
+main {
+  padding-top: calc(var(--header-offset));
+  transition: padding-top 160ms ease;
+}
+
+/* Si usas una clase .main-container en tu markup, la sincronizamos con la misma variable */
+.main-container {
+  padding-top: calc(var(--header-offset));
+}
+
+/* Asegurar que anclas/elementos con id no queden ocultos tras el header */
+h1, h2, h3, [id] {
+  scroll-margin-top: calc(var(--header-offset) + 12px);
+}
+
+/* Pequeños ajustes responsivos y utilidades */
+.container {
+  max-width: 1100px;
+}
+
+/* Nota:
+ - La variable --header-offset se calcula en cliente por JS (ResizeObserver) usando la altura real
+   del elemento .site-header. El Header.jsx que te di incluye el useEffect necesario.
+ - Si deseas un logo más pequeño, ajusta max-height en .site-header img.
+*/
