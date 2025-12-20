@@ -1,0 +1,97 @@
+/* ==========================
+   Estilos para páginas de programas
+========================== */
+
+/* Imagen principal del programa */
+.programa-img {
+    width: 100%;        /* ocupa todo el ancho */
+    height: auto;       /* mantiene proporción */
+    max-height: 600px;
+    display: block;     /* elimina espacios extra */
+    margin-bottom: 20px; /* separación entre imagen y contenido */
+}
+
+/* Contenedor del contenido HTML del programa */
+.contenido-html {
+    font-family: 'Times New Roman', serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000000;
+    margin-bottom: 40px; /* espacio inferior al final del contenido */
+}
+
+/* Títulos dentro del contenido */
+.contenido-html h1 {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.contenido-html h2 {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.contenido-html h3 {
+    font-size: 11pt;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+/* Negritas y cursivas ya se manejan con <b> y <i> en HTML */
+
+/* Listas */
+.contenido-html ul {
+    list-style-type: disc; /* circulitos */
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+/* Tablas */
+.contenido-html table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-family: 'Times New Roman', serif;
+}
+
+.contenido-html th, .contenido-html td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.contenido-html th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.contenido-html tbody tr:nth-child(even) {
+    background-color: #faf0e6; /* color arena clarito */
+}
+
+.contenido-html tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Macro / botón tipo excel */
+.macro {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 10px 5px;
+    background-color: #faf0e6; /* arena clarito */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+}
+
+.macro:hover {
+    background-color: #f0e0c0; /* color un poco más oscuro al pasar el mouse */
+    cursor: pointer;
+}
