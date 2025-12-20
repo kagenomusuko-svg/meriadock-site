@@ -6,7 +6,7 @@ import { useEffect } from "react";
 */
 export default function CodigoDeConducta() {
   useEffect(() => {
-    const pdfUrl = "/codigo_conducta/codigodeetica.pdf";
+    const pdfUrl = '/codigo-conducta';
     // abrir en nueva pestaña
     window.open(pdfUrl, "_blank", "noopener,noreferrer");
   }, []);
