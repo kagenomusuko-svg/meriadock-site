@@ -101,7 +101,7 @@ export default function Colaboracion() {
           </p>
 
           <p className="mb-4 text-gray-700">
-            Una vez recibida tu información, nos comunicaremos contigo para dar seguimiento. Revisa nuestro <a href="/aviso_privacidad/avisodeprivacidad.pdf" target="_blank" rel="noopener noreferrer" className="text-green-700 underline">Aviso de Privacidad</a>.
+            Una vez recibida tu información, nos comunicaremos contigo para dar seguimiento. Revisa nuestro <a href="//aviso-privacidad" target="_blank" rel="noopener noreferrer" className="text-green-700 underline">Aviso de Privacidad</a>.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
