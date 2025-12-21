@@ -104,7 +104,7 @@ export default function SolicitudOrientacion() {
           </p>
 
           <p className="mb-4 text-gray-700">
-            Revisa nuestro <a href="/aviso_privacidad/avisodeprivacidad.pdf" target="_blank" rel="noopener noreferrer" className="text-green-700 underline">Aviso de Privacidad</a>.
+            Revisa nuestro <a href="/aviso-privacidad" target="_blank" rel="noopener noreferrer" className="text-green-700 underline">Aviso de Privacidad</a>.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
