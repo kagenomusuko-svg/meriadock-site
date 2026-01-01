@@ -14,13 +14,13 @@ export default function Header() {
   const closeTimerProg = useRef(null);
   const headerRef = useRef(null);
 
-  // limpiar timers al desmontar
+  // Limpiar timers al desmontar
   useEffect(() => () => {
     clearTimeout(closeTimerNos.current);
     clearTimeout(closeTimerProg.current);
   }, []);
 
-  // helpers dropdown
+  // Helpers dropdown
   function openWithCancel(ref) {
     clearTimeout(ref.current);
   }
@@ -29,7 +29,7 @@ export default function Header() {
     ref.current = setTimeout(() => setter(false), 150);
   }
 
-  // cerrar con Escape (accesibilidad teclado)
+  // Cerrar con Escape (accesibilidad teclado)
   useEffect(() => {
     function onKey(e) {
       if (e.key === "Escape") {
@@ -49,7 +49,6 @@ export default function Header() {
     function setOffset() {
       const h = headerEl.offsetHeight || 0;
       document.documentElement.style.setProperty("--header-offset", `${h}px`);
-      // console.debug("Header offset:", h);
     }
 
     setOffset();
@@ -173,6 +172,7 @@ export default function Header() {
 
               <li><Link href="/publicaciones">Publicaciones</Link></li>
               <li><Link href="/donaciones">Donaciones</Link></li>
+              <li><Link href="https://intranet.meriadock.org.mx/login">Intranet</Link></li>
             </ul>
           </nav>
 
@@ -192,7 +192,7 @@ export default function Header() {
   );
 }
 
-/* Mobile menu component (igual que antes) */
+/* Mobile menu component */
 function MobileMenu() {
   const [open, setOpen] = useState(false);
   return (
@@ -231,6 +231,7 @@ function MobileMenu() {
 
               <li><Link href="/publicaciones">Publicaciones</Link></li>
               <li><Link href="/donaciones">Donaciones</Link></li>
+              <li><Link href="https://intranet.meriadock.org.mx/login">Intranet</Link></li>
             </ul>
           </div>
         </div>
