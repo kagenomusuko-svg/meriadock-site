@@ -63,6 +63,16 @@ export default async function handler(req, res) {
     if (!recaptchaOk) return res.status(400).json({ ok: false, message: "reCAPTCHA verification failed." });
 
     const subject = `Queremos escucharte — ${tipo}`;
+    const transporter = createTransporterFromEnv();
+    if (!transporter) {
+      console.error("SMTP no configurado: falta SMTP_HOST/SMTP_PORT en el entorno.");
+      return res.status(500).json({ ok: false, message: "SMTP server not configured." });
+    }
+
+    // Generar el folio antes del texto/html
+    const folio = new Date().toISOString();
+
+    // Agregar el folio al cuerpo del correo
     const textLines = [
       `Tipo: ${tipo}`,
       `Descripción: ${descripcion}`,
@@ -71,6 +81,7 @@ export default async function handler(req, res) {
       `Personas involucradas: ${personas_involucradas || "-"}`,
       `Nombre remitente: ${nombre || "Anónimo"}`,
       `Correo remitente: ${correo || "No proporcionado"}`,
+      `Folio: ${folio}`, // Aquí agregamos el folio al texto plano
     ];
     const text = textLines.join("\n");
 
@@ -81,15 +92,10 @@ export default async function handler(req, res) {
       <p><strong>Fecha (aprox):</strong> ${fecha_evento || "-"}</p>
       <p><strong>Personas involucradas:</strong> ${personas_involucradas || "-"}</p>
       <p><strong>Remitente:</strong> ${nombre || "Anónimo"} (${correo || "No proporcionado"})</p>
+      <p><strong>Folio:</strong> ${folio}</p> <!-- Aquí agregamos el folio al HTML -->
       <hr/>
       <p style="font-size:0.9em;color:#666">Enviado desde ${FROM_EMAIL}</p>
     `;
-
-    const transporter = createTransporterFromEnv();
-    if (!transporter) {
-      console.error("SMTP no configurado: falta SMTP_HOST/SMTP_PORT en el entorno.");
-      return res.status(500).json({ ok: false, message: "SMTP server not configured." });
-    }
 
     const mailOptions = {
       from: FROM_EMAIL,
@@ -98,15 +104,14 @@ export default async function handler(req, res) {
       text,
       html,
       replyTo: correo || undefined,
-      // Definir envelope explícito: make envelope.from equal the authenticated user if available
       envelope: {
         from: FROM_EMAIL,
         to: TO_EMAIL,
       },
     };
 
-    const info = await transporter.sendMail(mailOptions);
-    const folio = info?.messageId || new Date().toISOString();
+    // Enviar el correo
+    await transporter.sendMail(mailOptions);
 
     return res.status(200).json({ ok: true, folio });
   } catch (err) {
