@@ -158,13 +158,13 @@ export default function Header() {
                     style={{ ...dropdownStyle, borderColor: "#174036" }}
                   >
                     <li role="none" className="px-3 py-1">
-                      <Link href="/programas/eco"><span className="text-white">ECO</span></Link>
+                      <Link href="/programas/eco"><span className="text-white">RED</span></Link>
                     </li>
                     <li role="none" className="px-3 py-1">
                       <Link href="/programas/manos"><span className="text-white">MANOS</span></Link>
                     </li>
                     <li role="none" className="px-3 py-1">
-                      <Link href="/programas/rio"><span className="text-white">RÍO</span></Link>
+                      <Link href="/programas/rio"><span className="text-white">RIO</span></Link>
                     </li>
                   </ul>
                 )}
