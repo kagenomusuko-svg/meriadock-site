@@ -135,7 +135,7 @@ export default function Header() {
                 )}
               </li>
 
-              {/* PROGRAMAS */}
+              {/* EJES */}
               <li
                 className="relative"
                 onMouseEnter={() => (openWithCancel(closeTimerProg), setOpenProgramas(true))}
@@ -148,7 +148,7 @@ export default function Header() {
                   onFocus={() => (openWithCancel(closeTimerProg), setOpenProgramas(true))}
                   onBlur={() => closeWithDelay(closeTimerProg, setOpenProgramas)}
                 >
-                  Programas ▾
+                  Ejes ▾
                 </button>
 
                 {openProgramas && (
@@ -220,9 +220,9 @@ function MobileMenu() {
 
               <li>
                 <details>
-                  <summary className="cursor-pointer">Programas</summary>
+                  <summary className="cursor-pointer">Ejes</summary>
                   <ul className="pl-4 mt-2 space-y-1">
-                    <li><Link href="/programas/eco">ECO</Link></li>
+                    <li><Link href="/programas/eco">RED</Link></li>
                     <li><Link href="/programas/manos">MANOS</Link></li>
                     <li><Link href="/programas/rio">RÍO</Link></li>
                   </ul>
