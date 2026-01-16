@@ -50,7 +50,7 @@ export default function Footer() {
                 <Link href="/aviso-de-privacidad">Aviso de Privacidad</Link>
               </li>
               <li>
-                <Link href="/codigo-de-conducta">Código de Conducta</Link>
+                <Link href="https://drive.google.com/file/d/1iE31g4YxZgIZ2Z9GIJuSqmh9gX-fyh2F/view?usp=drive_link">Código de Conducta</Link>
               </li>
               <li>
                 <Link href="/queremos-escucharte">Queremos escucharte</Link>
