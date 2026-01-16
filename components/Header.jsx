@@ -224,7 +224,7 @@ function MobileMenu() {
                   <ul className="pl-4 mt-2 space-y-1">
                     <li><Link href="/programas/eco">RED</Link></li>
                     <li><Link href="/programas/manos">MANOS</Link></li>
-                    <li><Link href="/programas/rio">RÍO</Link></li>
+                    <li><Link href="/programas/rio">RIO</Link></li>
                   </ul>
                 </details>
               </li>
