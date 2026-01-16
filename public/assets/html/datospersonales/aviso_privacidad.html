@@ -1,101 +1,206 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Aviso de Privacidad - Centro Multidisciplinario Meriadock</title>
-    <link rel="stylesheet" href="/assets/css/estilos.css">
-    <style>
-        /* Estilo específico para la tabla de documentos */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            font-family: 'Times New Roman', serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RÍO – Centro Multidisciplinario Meriadock</title>
 
-        th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: left;
-        }
+<link rel="stylesheet" href="/assets/css/globals.css">
+<link rel="stylesheet" href="/assets/css/site.css">
 
-        th {
-            background-color: #f5f5f5;
-            font-weight: bold;
-        }
+<style>
+/* =====================
+   ESTILOS GENERALES
+===================== */
+body {
+    font-family: 'Times New Roman', serif;
+    background-color: #ffffff;
+    color: #000000;
+    margin: 0;
+    line-height: 1.6;
+}
 
-        tbody tr:nth-child(even) {
-            background-color: #faf0e6; /* color arena clarito */
-        }
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
 
-        tbody tr:nth-child(odd) {
-            background-color: #ffffff;
-        }
+/* =====================
+   ENCABEZADO / SELLO
+===================== */
+.tabla-sello {
+    margin: 0 auto 40px auto;
+    font-family: Georgia, serif;
+    color: #2f2f2f;
+}
 
-        h1, h2 {
-            font-family: 'Times New Roman', serif;
-        }
+.tabla-sello td {
+    vertical-align: middle;
+}
 
-        h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
+.sello-texto {
+    text-align: center;
+}
 
-        h2 {
-            font-size: 20px;
-            margin-top: 20px;
-        }
+.sello-titulo {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #1f7a4f;
+    margin-bottom: 3px;
+}
 
-        a {
-            color: #000000;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.sello-linea {
+    border-top: 1px solid #1f7a4f;
+    height: 0;
+}
 
-        a:hover {
-            text-decoration: underline;
-        }
+.sello-sub {
+    font-size: 10px;
+    color: #444;
+}
 
-        p {
-            font-size: 16px;
-            text-align: justify;
-        }
-    </style>
+.sello-rfc {
+    font-size: 10px;
+    color: #555;
+}
+
+.sello-lema {
+    margin-top: 6px;
+    font-size: 8px;
+    font-style: italic;
+    color: #1f7a4f;
+}
+
+/* =====================
+   TÍTULOS
+===================== */
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: #1E4C45;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #1E4C45;
+    margin-bottom: 30px;
+}
+
+/* =====================
+   TABLA MINIMALISTA
+===================== */
+.tabla-institucional {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 40px 0;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    text-align: left;
+}
+
+.tabla-institucional th,
+.tabla-institucional td {
+    padding: 15px 10px;
+    border: none;
+}
+
+.tabla-institucional th {
+    font-weight: bold;
+    font-size: 1.05rem;
+}
+
+.tabla-institucional tbody tr {
+    height: 50px;
+}
+
+.tabla-institucional tbody tr:hover {
+    background-color: #f5f5f5;
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Encabezado -->
-    <header>
-        <h1>Conoce nuestro Aviso de Privacidad</h1>
-    </header>
+<main>
 
-    <!-- Sección principal -->
-    <section class="section">
-        <p>
-            En el Centro Multidisciplinario Meriadock Formación y Asesoría, A.C., valoramos la confianza que depositan en nosotros. 
-            En cumplimiento con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, ponemos a disposición de nuestros usuarios y beneficiarios los siguientes documentos:
-        </p>
+<!-- SELLO INSTITUCIONAL -->
+<table class="tabla-sello" cellspacing="0" cellpadding="0">
+<tr>
+<td style="padding-right:20px;">
+    <img src="https://www.meriadock.org.mx/ac_seal.png"
+         alt="Sello de la Asociación Civil"
+         width="90"
+         style="display:block; filter: drop-shadow(2px 3px 3px rgba(120,120,120,0.45));">
+</td>
+<td class="sello-texto">
+    <div class="sello-titulo">Centro Multidisciplinario Meriadock</div>
+    <table width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="sello-linea"></td>
+            <td style="width:20px;"></td>
+            <td class="sello-linea"></td>
+        </tr>
+    </table>
+    <div class="sello-sub">Formación y Asesoría</div>
+    <div class="sello-rfc">R.F.C. CMM250808AC8</div>
+    <div class="sello-lema">“La fuerza interior nos impulsa, un pequeño apoyo de los demás nos bendice”</div>
+</td>
+</tr>
+</table>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Documento</th>
-                    <th>Enlace</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Aviso de Privacidad</td>
-                    <td><a href="/aviso-privacidad" target="_blank">Ver PDF</a></td>
-                </tr>
-                <tr>
-                    <td>Formato Único para Ejercicio de Derechos ARCO</td>
-                    <td><a href="/aviso_privacidad/formato_arco.pdf" target="_blank">Ver PDF</a></td>
-                </tr>
-            </tbody>
-        </table>
+<!-- CONTENIDO -->
+<h1>Aviso de Privacidad</h1>
+ <p>En el Centro Multidisciplinario Meriadock Formación y Asesoría, A.C., valoramos la confianza que depositan en nosotros. 
+            En cumplimiento con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, ponemos a disposición de nuestros usuarios y beneficiarios nuestro Aviso de Privacidad: 
+              </p>
+<h2></h2>
 
-    </section>
+
+<!-- TABLA DE DATOS -->
+<table class="tabla-institucional">
+<thead>
+<tr>
+<th>Documento</th>
+<th>Enlace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aviso de Privacidad</td>
+<td><a href="https://drive.google.com/file/d/1VoGv_db3H9d_K4bElSdgOEIQoiCo5mMc/view?usp=sharing" target="_blank">Ver PDF</a></td>
+</tr>
+
+</tbody>
+</table>
+</main>
+
+    <table style="font-family: Georgia, serif; color: #2f2f2f; float: right;" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="vertical-align: middle; padding-right: 20px;"><img style="display: block; filter: drop-shadow(2px 3px 3px rgba(120,120,120,0.45));" src="https://www.meriadock.org.mx/ac_seal.png" alt="Sello de la Asociaci&oacute;n Civil" width="90" /></td>
+<td style="text-align: center;">
+<div style="font-family: 'Times New Roman', serif; font-size: 14px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #1f7a4f; white-space: nowrap; margin-bottom: 3px;">Datos</div>
+<table style="margin: 2px 0 3px 0; border-collapse: collapse;" width="100%" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="border-top: 1px solid #1f7a4f; font-size: 0; line-height: 0;">&nbsp;</td>
+<td style="width: 20px; font-size: 0; line-height: 0;">&nbsp;</td>
+<td style="border-top: 1px solid #1f7a4f; font-size: 0; line-height: 0;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<div style="font-size: 10px; color: #444; margin-top: 1px; line-height: 1.2;">Sistema Interno de Datos Personales</div>
+<div style="font-size: 10px; color: #555; line-height: 1.2;">Unidad de Gobernanza</div>
+<div style="margin-top: 6px; font-size: 8px; font-style: italic; color: #1f7a4f; line-height: 1.3;">&ldquo;La fuerza interior nos impulsa, un peque&ntilde;o apoyo de los dem&aacute;s nos bendice&rdquo;</div>
+</td>
+</tr>
+</tbody>
+</table>
 
 </body>
 </html>
