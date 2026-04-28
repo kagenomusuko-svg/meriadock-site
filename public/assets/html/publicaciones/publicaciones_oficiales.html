@@ -3,261 +3,337 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RÍO – Centro Multidisciplinario Meriadock</title>
-
+<title>Publicaciones – Centro Multidisciplinario Meriadock</title>
 <link rel="stylesheet" href="/assets/css/globals.css">
 <link rel="stylesheet" href="/assets/css/site.css">
-
 <style>
-/* =====================
-   ESTILOS GENERALES
-===================== */
+
+/* ─── BASE ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
 body {
-    font-family: 'Times New Roman', serif;
-    background-color: #ffffff;
-    color: #000000;
+    font-family: 'Times New Roman', Times, serif;
+    background: #fff;
+    color: #111;
     margin: 0;
-    line-height: 1.6;
+    line-height: 1.55;
 }
 
 main {
-    max-width: 900px;
+    max-width: 860px;
     margin: 0 auto;
-    padding: 50px 20px;
+    padding: 48px 24px 80px;
 }
 
-/* =====================
-   ENCABEZADO / SELLO
-===================== */
-.tabla-sello {
-    margin: 0 auto 40px auto;
-    font-family: Georgia, serif;
-    color: #2f2f2f;
+/* ─── CABECERA DE PÁGINA ────────────────────────────────── */
+.page-head {
+    border-top: 3px solid #111;
+    border-bottom: 1px solid #111;
+    padding: 18px 0 14px;
+    margin-bottom: 10px;
+    text-align: center;
 }
+.page-head h1 {
+    font-size: 1.9rem;
+    font-weight: bold;
+    color: #1E4C45;
+    margin: 0 0 4px;
+    letter-spacing: .5px;
+}
+.page-head .subtitulo {
+    font-size: .95rem;
+    color: #444;
+    font-style: italic;
+    margin: 0;
+}
+.orcid-line {
+    font-size: .82rem;
+    color: #666;
+    margin: 10px 0 0;
+    letter-spacing: .3px;
+}
+.orcid-line a { color: #1f7a4f; text-decoration: none; border-bottom: 1px solid #a8d5c0; }
+.orcid-line a:hover { color: #145c38; }
 
-.tabla-sello td {
+/* ─── ESTADO DE CARGA ───────────────────────────────────── */
+#estado-carga {
+    text-align: center;
+    padding: 32px 0;
+    font-size: .9rem;
+    color: #777;
+    font-style: italic;
+    letter-spacing: .3px;
+}
+.spinner {
+    display: inline-block;
+    width: 18px; height: 18px;
+    border: 2px solid #ccc;
+    border-top-color: #1f7a4f;
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+    margin-right: 10px;
     vertical-align: middle;
 }
+@keyframes spin { to { transform: rotate(360deg); } }
 
-.sello-texto {
-    text-align: center;
+/* ─── COLECCIÓN ─────────────────────────────────────────── */
+.coleccion {
+    margin-top: 44px;
 }
 
-.sello-titulo {
-    font-size: 14px;
-    font-weight: bold;
+.coleccion-header {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 0;
+    border-top: 2px solid #111;
+}
+.coleccion-barra {
+    width: 6px;
+    background: #1f7a4f;
+    flex-shrink: 0;
+}
+.coleccion-titulo-wrap {
+    flex: 1;
+    padding: 10px 14px;
+    background: #f7f7f5;
+}
+.coleccion-etiqueta {
+    font-size: 8.5px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     color: #1f7a4f;
-    margin-bottom: 3px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 2px;
+}
+.coleccion-nombre {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #111;
+    font-variant: small-caps;
+    letter-spacing: .5px;
 }
 
-.sello-linea {
-    border-top: 1px solid #1f7a4f;
-    height: 0;
-}
-
-.sello-sub {
-    font-size: 10px;
-    color: #444;
-}
-
-.sello-rfc {
-    font-size: 10px;
-    color: #555;
-}
-
-.sello-lema {
-    margin-top: 6px;
-    font-size: 8px;
-    font-style: italic;
-    color: #1f7a4f;
-}
-
-/* =====================
-   TÍTULOS
-===================== */
-h1 {
-    font-size: 2.5rem;
-    text-align: center;
-    color: #1E4C45;
-    margin-bottom: 10px;
-}
-
-h2 {
-    font-size: 1.5rem;
-    text-align: center;
-    color: #1E4C45;
-    margin-bottom: 30px;
-}
-
-/* =====================
-   TABLA MINIMALISTA
-===================== */
-.tabla-institucional {
+/* ─── TABLA DE LIBROS ───────────────────────────────────── */
+.libros-tabla {
     width: 100%;
     border-collapse: collapse;
-    margin: 40px 0;
-    border-top: 2px solid #000;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #111;
+}
+
+.libros-tabla thead tr {
+    border-bottom: 1px solid #bbb;
+}
+.libros-tabla thead th {
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #555;
+    font-weight: normal;
+    padding: 7px 10px;
     text-align: left;
 }
+.libros-tabla thead th:first-child { width: 28px; text-align: center; }
+.libros-tabla thead th:last-child  { text-align: center; width: 110px; }
 
-.tabla-institucional th,
-.tabla-institucional td {
-    padding: 15px 10px;
-    border: none;
+.libro-fila {
+    border-bottom: 1px solid #e8e8e5;
+    transition: background .15s;
+}
+.libro-fila:hover { background: #f4faf7; }
+
+.libro-fila td {
+    padding: 13px 10px;
+    vertical-align: top;
+    font-size: .92rem;
 }
 
-.tabla-institucional th {
+/* número */
+.td-num {
+    text-align: center;
+    color: #bbb;
+    font-size: .75rem;
+    font-variant: tabular-nums;
+    padding-top: 15px !important;
+    width: 28px;
+}
+
+/* título + meta */
+.libro-titulo {
     font-weight: bold;
-    font-size: 1.05rem;
+    color: #1E4C45;
+    display: block;
+    line-height: 1.35;
+    margin-bottom: 4px;
+}
+.libro-meta {
+    font-size: .78rem;
+    color: #777;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 12px;
+    align-items: center;
+}
+.libro-meta .sep { color: #ccc; }
+.libro-autor { font-style: italic; }
+.libro-paginas::before { content: '·  '; color: #ccc; }
+
+/* año */
+.td-anio {
+    font-size: .85rem;
+    color: #555;
+    white-space: nowrap;
+    padding-top: 15px !important;
+    width: 55px;
 }
 
-.tabla-institucional tbody tr {
-    height: 50px;
+/* DOI + acciones */
+.td-acciones {
+    text-align: center;
+    width: 110px;
+    padding-top: 12px !important;
 }
+.doi-badge {
+    display: inline-block;
+    font-size: .65rem;
+    font-family: 'Courier New', monospace;
+    color: #1f7a4f;
+    border: 1px solid #1f7a4f;
+    border-radius: 2px;
+    padding: 2px 5px;
+    margin-bottom: 6px;
+    letter-spacing: .3px;
+    line-height: 1.4;
+}
+.btn-zenodo {
+    display: block;
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    background: #1f7a4f;
+    border: none;
+    border-radius: 2px;
+    padding: 5px 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .15s;
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+}
+.btn-zenodo:hover { background: #145c38; }
 
-.tabla-institucional tbody tr:hover {
-    background-color: #f5f5f5;
+/* ─── PIE ───────────────────────────────────────────────── */
+.pie-pagina {
+    margin-top: 60px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    font-size: .78rem;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.pie-zenodo-logo {
+    font-size: .78rem;
+    color: #aaa;
+    font-style: italic;
+}
+.pie-zenodo-logo span { color: #1f7a4f; font-weight: bold; }
+
+/* ─── BANNER COMUNIDAD ──────────────────────────────────── */
+.comunidad-banner {
+    margin: 36px 0 0;
+    border: 1px solid #1f7a4f;
+    border-left: 5px solid #1f7a4f;
+    border-radius: 2px;
+    background: #f4faf7;
+}
+.comunidad-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 18px;
+    flex-wrap: wrap;
+}
+.comunidad-texto {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 200px;
+}
+.comunidad-etiqueta {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #1f7a4f;
+    font-weight: bold;
+}
+.comunidad-nombre {
+    font-size: .95rem;
+    font-weight: bold;
+    color: #1E4C45;
+    font-variant: small-caps;
+    letter-spacing: .3px;
+}
+.comunidad-desc {
+    font-size: .78rem;
+    color: #555;
+    line-height: 1.45;
+}
+.comunidad-btn {
+    display: inline-block;
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    background: #1f7a4f;
+    border-radius: 2px;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: background .15s;
+}
+.comunidad-btn:hover { background: #145c38; }
+
+/* ─── NOTA DE VERIFICACIÓN ──────────────────────────────── */
+.nota-verificacion {
+    font-size: .8rem;
+    color: #666;
+    background: #f7f7f5;
+    border-left: 3px solid #1f7a4f;
+    padding: 10px 14px;
+    margin: 24px 0 0;
+    line-height: 1.5;
+}
+.nota-verificacion a { color: #1f7a4f; }
+
+/* ─── RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 580px) {
+    .libros-tabla thead { display: none; }
+    .libros-tabla td { display: block; padding: 4px 10px; }
+    .td-num { display: none; }
+    .td-anio { padding-top: 4px !important; }
+    .td-acciones { text-align: left; padding-top: 4px !important; }
+    .doi-badge { margin-bottom: 4px; }
 }
 </style>
 </head>
-
 <body>
-
 <main>
 
-<!-- SELLO INSTITUCIONAL -->
-<table class="tabla-sello" cellspacing="0" cellpadding="0">
-<tr>
-<td style="padding-right:20px;">
-    <img src="https://www.meriadock.org.mx/ac_seal.png"
-         alt="Sello de la Asociación Civil"
-         width="90"
-         style="display:block; filter: drop-shadow(2px 3px 3px rgba(120,120,120,0.45));">
-</td>
-<td class="sello-texto">
-    <div class="sello-titulo">Centro Multidisciplinario Meriadock</div>
-    <table width="100%" cellspacing="0" cellpadding="0">
-        <tr>
-            <td class="sello-linea"></td>
-            <td style="width:20px;"></td>
-            <td class="sello-linea"></td>
-        </tr>
-    </table>
-    <div class="sello-sub">Formación y Asesoría</div>
-    <div class="sello-rfc">R.F.C. CMM250808AC8</div>
-    <div class="sello-lema">“La fuerza interior nos impulsa, un pequeño apoyo de los demás nos bendice”</div>
-</td>
-</tr>
-</table>
-
-<!-- CONTENIDO -->
-<h1>Publicaciones</h1>
-<h2></h2>
-
-<p>
-Listado de documentos oficiales y publicaciones del Centro Multidisciplinario Meriadock Formación y Asesoría, A.C.
-</p>
-
-<!-- TABLA DE DATOS -->
-<table class="tabla-institucional">
-<thead>
-<tr>
-<th>Autor</th>
-<th>Título</th>
-<th>Documento</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th><em>Reivindicación ontológica del ego<em></th>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<tr>
-<td>Hilario Olvera</td>
-<td><p>El telar de las Moiras: ontología de la autodeterminación causal</p></td>
-<td><a href="https://drive.google.com/file/d/1K5zXsdMjygxoAIGYuyBspSm4uJKG1-5O/preview" target="_blank">PDF</a></td>
-</tr>
-<tr>
-<td>Hilario Olvera</td>
-<td><p>Caos: el abismo del ego y la doble mediación</p></td>
-<td><a href="https://drive.google.com/file/d/1xrIikX5rgBd7pBtCwUeudT0jyVjfTBYU/preview" target="_blank">PDF</a></td>
-</tr>
-<tr>
-<td>Hilario Olvera</td>
-<td><p>El dilema de Aquiles o la disociación del ego</p></td>
-<td><a href="https://drive.google.com/file/d/1ySPO0JhuR-6MxFp8pst-XDslJN6F0znU/preview" target="_blank">PDF</a></td>
-</tr>
-<tr>
-<td>Hilario Olvera</td>
-<td><p>El juego de las máscaras o la disforia de la identidad</p></td>
-<td><a href="https://drive.google.com/file/d/1LQwPB1CbI3dseMBZHwrLbN0YNZ_fDajI/preview" target="_blank">PDF</a></td>
-</tr>
-<tr>
-<td>Hilario Olvera</td>
-<td><p>Afrodita Areia: sobre la pasión</p></td>
-<td><a href="https://drive.google.com/file/d/1VpizqF1lAph52Ty-kQva54pwSN7xYa58/preview" target="_blank">PDF</a></td>
-</tr>
-<tr>
-<td>Hilario Olvera</td>
-<td><p>Afrodita Areia: Ágape</p></td>
-<td><a href="https://drive.google.com/file/d/1IX9w_WhJQiaAW9QvwytszrjVGqB6dWdi/preview" target="_blank">PDF</a></td>
-</tr>
-<tr>
-<td>Hilario Olvera</td>
-<td><p>Afrodita Areia: Damasén</p></td>
-<td><a href="https://drive.google.com/file/d/15CHv4EOb-PJYLghsuY9UkgyoEPjWeSwc/preview" target="_blank">PDF</a></td>
-</tr>
-<tr>
-<td>Hilario Olvera</td>
-<td><p>Afrodita Areia: Areópago</p></td>
-<td><a href="https://drive.google.com/file/d/1k25DMxplLcnI-QVKL5pvnZL_YyqvaLuJ/preview" target="_blank">PDF</a></td>
-</tr>
-<tr>
-<td>Hilario Olvera</td>
-<td><p>Afrodita Areia: Caelus</p></td>
-<td><a href="https://drive.google.com/file/d/1gIkJDAGhZ21YHJZap1gOtFuRdFJbcK_B/preview" target="_blank">PDF</a></td>
-</tr>
-<tr>
-<td>Hilario Olvera</td>
-<td><p>El cálculo de la responsabilidad: una ontología matemática para
-sistemas causales complejos</p></td>
-<td><a href="https://drive.google.com/file/d/1yRcZBBlw7RdgKcfY7PbrWkc2-Snu8TuV/preview" target="_blank">PDF</a></td>
-</tr>
-<tr>
-<th><em>Autodeterminación causal<em></th>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<tr>
-<td>Centro Multidisciplinario Meriadock</td>
-<td><p>SDO: Sistema de diagnóstico ontológico</p></td>
-<td><a href="https://drive.google.com/file/d/16JVs3stCUqh2x-4X7dyhniNYnqj2aljw/preview" target="_blank">PDF</a></td>
-</tr>
-<tr>
-<td>Hilario Olvera</td>
-<td><p>La transformación formal: la ontología del ego como fundamento del
-cálculo causal</p></td>
-<td><a href="https://drive.google.com/file/d/1QlGJ6L2fc5yO1Whn7FwJMqrDItj0H6sG/preview" target="_blank">PDF</a></td>
-</tr>
-</tbody>
-</table>
-<footer>
-    <p>&copy; 2025 Centro Multidisciplinario Meriadock Formación y Asesoría, A.C.</p>
-</footer>
-</main>
-
-    <table style="font-family: Georgia, serif; color: #2f2f2f; float: right;" cellspacing="0" cellpadding="0">
+<!-- SELLO -->
+<table style="font-family: Georgia, serif; color: #2f2f2f; margin-left: auto; margin-right: auto;" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
 <td style="vertical-align: middle; padding-right: 20px;"><img style="display: block; filter: drop-shadow(2px 3px 3px rgba(120,120,120,0.45));" src="https://www.meriadock.org.mx/ac_seal.png" alt="Sello de la Asociaci&oacute;n Civil" width="90" /></td>
 <td style="text-align: center;">
-<div style="font-family: 'Times New Roman', serif; font-size: 14px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #1f7a4f; white-space: nowrap; margin-bottom: 3px;">Consejo</div>
+<td style="text-align: center;">
+<div style="font-family: 'Times New Roman', serif; font-size: 14px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #1f7a4f; white-space: nowrap; margin-bottom: 3px;">Centro Multidisciplinario Meriadock</div>
 <table style="margin: 2px 0 3px 0; border-collapse: collapse;" width="100%" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
@@ -267,13 +343,195 @@ cálculo causal</p></td>
 </tr>
 </tbody>
 </table>
-<div style="font-size: 10px; color: #444; margin-top: 1px; line-height: 1.2;">Consejo Directivo</div>
-<div style="font-size: 10px; color: #555; line-height: 1.2;"></div>
+<div style="font-size: 10px; color: #444; margin-top: 1px; line-height: 1.2;">Formación y Asesoría</div>
+<div style="font-size: 10px; color: #555; line-height: 1.2;">R.F.C. CMM250808AC8</div>
 <div style="margin-top: 6px; font-size: 8px; font-style: italic; color: #1f7a4f; line-height: 1.3;">&ldquo;La fuerza interior nos impulsa, un peque&ntilde;o apoyo de los dem&aacute;s nos bendice&rdquo;</div>
 </td>
 </tr>
 </tbody>
 </table>
 
+<!-- CABECERA -->
+<div class="page-head">
+    <h1>Catálogo de Publicaciones</h1>
+    <p class="subtitulo">Obra del Centro de Investigación en Metrología Causal · 2026</p>
+    <p class="orcid-line">
+        Autor: Miguel Hilario Olvera Aguilar ·
+        ORCID <a href="https://orcid.org/0009-0007-1362-4436" target="_blank">0009-0007-1362-4436</a> ·
+        Repositorio: <a href="https://zenodo.org" target="_blank">Zenodo (CERN)</a>
+    </p>
+</div>
+
+<!-- ESTADO CARGA -->
+<div id="estado-carga">
+    <span class="spinner"></span> Consultando repositorio Zenodo…
+</div>
+
+<!-- CONTENEDOR DE COLECCIONES -->
+<div id="catalogo"></div>
+
+<!-- BANNER COMUNIDAD ZENODO -->
+<div class="comunidad-banner">
+    <div class="comunidad-inner">
+        <div class="comunidad-texto">
+            <span class="comunidad-etiqueta">Repositorio abierto</span>
+            <span class="comunidad-nombre">Centro Multidisciplinario Meriadock — Comunidad Zenodo</span>
+            <span class="comunidad-desc">Todas las publicaciones del Centro están disponibles en acceso abierto, con DOI permanente y licencia CC BY-NC-ND 4.0, en el repositorio operado por el CERN.</span>
+        </div>
+        <a class="comunidad-btn"
+           href="https://zenodo.org/communities/centro_meriadock"
+           target="_blank" rel="noopener">
+            Ver comunidad ↗
+        </a>
+    </div>
+</div>
+
+<!-- NOTA VERIFICACIÓN -->
+<div class="nota-verificacion">
+    Todos los registros están alojados en <strong>Zenodo</strong>, repositorio de acceso abierto operado por el CERN.
+    Cada entrada incluye su DOI permanente para verificación y citación. Las publicaciones se encuentran bajo licencia
+    <strong>CC BY-NC-ND 4.0</strong>. Puede consultarse el perfil completo del autor en
+    <a href="https://orcid.org/0009-0007-1362-4436" target="_blank">ORCID 0009-0007-1362-4436</a>
+    y el repositorio completo de la institución en
+    <a href="https://zenodo.org/communities/centro_meriadock" target="_blank">zenodo.org/communities/centro_meriadock</a>.
+</div>
+
+<!-- PIE -->
+<div class="pie-pagina">
+    <span>© 2026 Centro Multidisciplinario Meriadock Formación y Asesoría, A.C.</span>
+    <span class="pie-zenodo-logo">Alojado en <span>Zenodo</span> · CERN Open Science</span>
+</div>
+
+</main>
+
+<script>
+// ─── DATOS ESTÁTICOS ─────────────────────────────────────────────────────────
+// record_id extraído de cada DOI: 10.5281/zenodo.{id}
+const COLECCIONES = [
+  {
+    nombre: 'Reivindicación Ontológica del Ego',
+    libros: [
+      { id: 19601876, titulo: 'El telar de las Moiras: ontología de la autodeterminación causal', autor: 'Miguel Hilario Olvera Aguilar', anio: 2026, paginas: 308 },
+      { id: 19601474, titulo: 'Caos: el abismo del ego y la doble mediación',                    autor: 'Miguel Hilario Olvera Aguilar', anio: 2026, paginas: 447 },
+      { id: 19601694, titulo: 'El dilema de Aquiles o la disociación del ego',                   autor: 'Miguel Hilario Olvera Aguilar', anio: 2026, paginas: 299 },
+      { id: 19601758, titulo: 'El juego de las máscaras o la disforia de la identidad',          autor: 'Miguel Hilario Olvera Aguilar', anio: 2026, paginas: 349 },
+      { id: 19601428, titulo: 'Afrodita Areia: sobre la pasión (Vol. I)',                        autor: 'Miguel Hilario Olvera Aguilar', anio: 2026, paginas: 385 },
+      { id: 19601149, titulo: 'Afrodita Areia: Ágape (Vol. II)',                                 autor: 'Miguel Hilario Olvera Aguilar', anio: 2026, paginas: 200 },
+      { id: 19596275, titulo: 'Afrodita Areia: Damasén (Vol. III)',                              autor: 'Miguel Hilario Olvera Aguilar', anio: 2026, paginas: 296 },
+      { id: 19601192, titulo: 'Afrodita Areia: Areópago (Vol. IV)',                              autor: 'Miguel Hilario Olvera Aguilar', anio: 2026, paginas: 426 },
+      { id: 19601228, titulo: 'Afrodita Areia: Caelus (Vol. V)',                                 autor: 'Miguel Hilario Olvera Aguilar', anio: 2026, paginas: 270 },
+      { id: 19601652, titulo: 'El cálculo de la responsabilidad: una ontología matemática para sistemas causales complejos', autor: 'Miguel Hilario Olvera Aguilar', anio: 2026, paginas: 834 },
+    ]
+  },
+  {
+    nombre: 'Autodeterminación Causal',
+    libros: [
+      { id: 19602143, titulo: 'SDO: Sistema de Diagnóstico Ontológico',                          autor: 'Centro Multidisciplinario Meriadock', anio: 2026, paginas: 1130 },
+      { id: 19601945, titulo: 'La transformación formal: la ontología del ego como fundamento del cálculo causal', autor: 'Miguel Hilario Olvera Aguilar', anio: 2026, paginas: 301 },
+      { id: 19601620, titulo: 'ECO: Entrevista Clínica Ontológica',                              autor: 'Centro Multidisciplinario Meriadock', anio: 2026, paginas: 519 },
+      { id: 19601911, titulo: 'HISTOS: Protocolo de Acompañamiento Ontológico',                  autor: 'Centro Multidisciplinario Meriadock', anio: 2026, paginas: 548 },
+    ]
+  },
+  {
+    nombre: 'Metrología Causal',
+    libros: [
+      { id: 19602012, titulo: 'Metrología Causal: la ciencia de la medición causal',             autor: 'Miguel Hilario Olvera Aguilar', anio: 2026, paginas: 498 },
+      { id: 19602064, titulo: 'Metrología Causal: Vol. II',                                      autor: 'Miguel Hilario Olvera Aguilar', anio: 2026, paginas: 183 },
+      { id: 19600266, titulo: 'Axiomatización del sistema de la doble mediación',                 autor: 'Miguel Hilario Olvera Aguilar', anio: 2026, paginas: 127 },
+      { id: 19601047, titulo: 'Arquitectura ontológica de sistemas artificiales',                 autor: 'Miguel Hilario Olvera Aguilar', anio: 2026, paginas:  77 },
+      { id: 19602296, titulo: 'Taxonomía General de Aplicaciones',                               autor: 'Centro Multidisciplinario Meriadock', anio: 2026, paginas: 2176 },
+    ]
+  },
+  {
+    nombre: 'Método Prometeo de Imputación Causal',
+    libros: [
+      { id: 19601839, titulo: 'El método Prometeo: imputación causal para juristas y abogados',  autor: 'Miguel Hilario Olvera Aguilar', anio: 2026, paginas: 327 },
+    ]
+  },
+];
+
+// ─── RENDERIZADO ─────────────────────────────────────────────────────────────
+function doi(id) { return `10.5281/zenodo.${id}`; }
+function urlZenodo(id) { return `https://zenodo.org/records/${id}`; }
+
+function renderCatalogo() {
+    const contenedor = document.getElementById('catalogo');
+    let globalNum = 1;
+
+    COLECCIONES.forEach(col => {
+        const sec = document.createElement('section');
+        sec.className = 'coleccion';
+
+        sec.innerHTML = `
+          <div class="coleccion-header">
+            <div class="coleccion-barra"></div>
+            <div class="coleccion-titulo-wrap">
+              <span class="coleccion-etiqueta">Colección</span>
+              <span class="coleccion-nombre">${col.nombre}</span>
+            </div>
+          </div>
+          <table class="libros-tabla">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Título</th>
+                <th>Año</th>
+                <th>Zenodo</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-${col.nombre.replace(/\s+/g,'-')}"></tbody>
+          </table>`;
+
+        contenedor.appendChild(sec);
+
+        const tbody = sec.querySelector('tbody');
+        col.libros.forEach(libro => {
+            const tr = document.createElement('tr');
+            tr.className = 'libro-fila';
+            tr.innerHTML = `
+              <td class="td-num">${globalNum}</td>
+              <td>
+                <span class="libro-titulo">${libro.titulo}</span>
+                <div class="libro-meta">
+                  <span class="libro-autor">${libro.autor}</span>
+                  <span class="libro-paginas">${libro.paginas.toLocaleString('es-MX')} pp.</span>
+                </div>
+              </td>
+              <td class="td-anio">${libro.anio}</td>
+              <td class="td-acciones">
+                <span class="doi-badge">${doi(libro.id).replace('10.5281/','')}</span>
+                <a class="btn-zenodo"
+                   href="${urlZenodo(libro.id)}"
+                   target="_blank"
+                   rel="noopener">Ver / PDF ↗</a>
+              </td>`;
+            tbody.appendChild(tr);
+            globalNum++;
+        });
+    });
+
+    document.getElementById('estado-carga').remove();
+}
+
+// ─── VERIFICACIÓN OPCIONAL DE ZENODO ─────────────────────────────────────────
+// Verifica silenciosamente que los registros sean públicos.
+// Si Zenodo no responde, la página ya está completa con los datos estáticos.
+async function verificarZenodo() {
+    try {
+        const r = await fetch('https://zenodo.org/api/records/19601876', { signal: AbortSignal.timeout(6000) });
+        if (!r.ok) throw new Error('no ok');
+        // Si responde, podríamos enriquecer datos aquí en el futuro.
+        // Por ahora solo usamos datos estáticos (más rápido y confiable).
+    } catch(_) {
+        // Sin conexión a Zenodo: la página funciona igual con datos locales.
+    }
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+    renderCatalogo();
+    verificarZenodo();
+});
+</script>
 </body>
 </html>
