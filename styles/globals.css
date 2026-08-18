@@ -69,3 +69,232 @@ h1, h2, h3, [id] {
    del elemento .site-header. El Header.jsx que te di incluye el useEffect necesario.
  - Si deseas un logo más pequeño, ajusta max-height en .site-header img.
 */
+
+/* ===== ESTILOS HOME - PORTAL INSTITUCIONAL ===== */
+
+.home-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* 1. SLIDER PRINCIPAL */
+.slider-principal {
+  margin: 40px 0;
+}
+
+.slider-placeholder {
+  background: #f5f5f5;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  padding: 60px 24px;
+  text-align: center;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999999;
+  font-size: 14px;
+}
+
+/* DIVISOR */
+.divider {
+  height: 1px;
+  background: #f0f0f0;
+  margin: 48px 0;
+}
+
+/* 2. NOTICIAS Y CONVOCATORIAS */
+.news-section {
+  margin: 40px 0;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1E4C45;
+  margin-bottom: 24px;
+}
+
+/* CARRUSEL HORIZONTAL */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  margin-top: 24px;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  /* Ocultar scrollbar en algunos navegadores */
+  -ms-overflow-style: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.carousel-track::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 3px;
+}
+
+.carousel-track::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-radius: 3px;
+}
+
+.carousel-track::-webkit-scrollbar-thumb:hover {
+  background: #1E4C45;
+}
+
+.news-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  flex: 0 0 280px;
+  min-width: 280px;
+  transition: border-color 0.2s;
+}
+
+.news-card:hover {
+  border-color: #1E4C45;
+}
+
+.news-card-img {
+  height: 140px;
+  background: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999999;
+  font-size: 12px;
+}
+
+.news-card-content {
+  padding: 16px;
+}
+
+.news-card h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1E4C45;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.news-card p {
+  font-size: 13px;
+  color: #666666;
+  margin-bottom: 12px;
+}
+
+.news-date {
+  font-size: 12px;
+  color: #999999;
+}
+
+/* 3. QUIÉNES SOMOS / QUÉ HACEMOS */
+.about-section {
+  margin: 48px 0 40px 0;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 0;
+}
+
+.about-column h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1E4C45;
+  margin-bottom: 16px;
+}
+
+.about-column p {
+  font-size: 14px;
+  color: #555555;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* EJES (Lista de acciones) */
+.axes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.axes-item {
+  margin-bottom: 20px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.axes-item::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #1E4C45;
+  font-weight: bold;
+}
+
+.axes-item strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1E4C45;
+  margin-bottom: 6px;
+}
+
+.axes-item strong a {
+  color: #1E4C45;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.axes-item strong a:hover {
+  text-decoration: underline;
+}
+
+.axes-item p {
+  font-size: 13px;
+  color: #666666;
+  margin: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .home-main {
+    padding: 0 16px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .news-card {
+    flex: 0 0 250px;
+    min-width: 250px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .slider-principal {
+    margin: 24px 0;
+  }
+
+  .divider {
+    margin: 32px 0;
+  }
+}
