@@ -96,7 +96,7 @@ export default function Home() {
               <ul className="axes-list">
                 <li className="axes-item">
                   <strong>
-                    <Link href="/programas/eco">Desarrollo social</Link>
+                    <Link href="/programas/eco">Desarrollo social y comunitario</Link>
                   </strong>
                   <p>
                     Diseñamos y realizamos programas, talleres, acciones de acompañamiento y proyectos
