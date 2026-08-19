@@ -20,6 +20,19 @@ const nextConfig = {
       }
       // Aquí podrías seguir añadiendo nuevos documentos con el mismo formato
     ];
+  },
+  async rewrites() {
+    return [
+      // Rewrite para Academia Meriadock - mantiene la URL en el navegador
+      {
+        source: '/academia',
+        destination: 'https://meriadock-academy-six.vercel.app/academia',
+      },
+      {
+        source: '/academia/:path*',
+        destination: 'https://meriadock-academy-six.vercel.app/academia/:path*',
+      }
+    ];
   }
 };
 
