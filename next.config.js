@@ -31,6 +31,15 @@ const nextConfig = {
       {
         source: '/academia/:path*',
         destination: 'https://meriadock-academy-six.vercel.app/academia/:path*',
+      },
+      // Rewrite para Diálogos Eleatas - mantiene la URL institucional
+      {
+        source: '/dialogos-eleatas',
+        destination: 'https://dialogos-eleatas.vercel.app/dialogos-eleatas',
+      },
+      {
+        source: '/dialogos-eleatas/:path*',
+        destination: 'https://dialogos-eleatas.vercel.app/dialogos-eleatas/:path*',
       }
     ];
   }
