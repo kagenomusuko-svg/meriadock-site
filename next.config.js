@@ -41,14 +41,14 @@ const nextConfig = {
         source: '/dialogos-eleatas/:path*',
         destination: 'https://dialogos-eleatas.vercel.app/dialogos-eleatas/:path*',
       },
-      // Rewrite para Gaceta Institucional - mantiene la URL institucional
+      // Gaceta: proxy interno para impedir que el origen de Vercel sea visible al visitante
       {
         source: '/gaceta',
-        destination: 'https://gaceta-hilario-olveras-projects.vercel.app/gaceta',
+        destination: '/api/gaceta-proxy',
       },
       {
         source: '/gaceta/:path*',
-        destination: 'https://gaceta-hilario-olveras-projects.vercel.app/gaceta/:path*',
+        destination: '/api/gaceta-proxy?path=:path*',
       }
     ];
   }
