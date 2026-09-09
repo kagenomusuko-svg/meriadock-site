@@ -40,6 +40,15 @@ const nextConfig = {
       {
         source: '/dialogos-eleatas/:path*',
         destination: 'https://dialogos-eleatas.vercel.app/dialogos-eleatas/:path*',
+      },
+      // Rewrite para Gaceta Institucional - mantiene la URL institucional
+      {
+        source: '/gaceta',
+        destination: 'https://gaceta-hilario-olveras-projects.vercel.app/gaceta',
+      },
+      {
+        source: '/gaceta/:path*',
+        destination: 'https://gaceta-hilario-olveras-projects.vercel.app/gaceta/:path*',
       }
     ];
   }
