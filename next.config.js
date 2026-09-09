@@ -41,16 +41,14 @@ const nextConfig = {
         source: '/dialogos-eleatas/:path*',
         destination: 'https://dialogos-eleatas.vercel.app/dialogos-eleatas/:path*',
       },
-      // Rewrite para Gaceta Institucional. La marca interna evita que el
-      // middleware del proyecto Gaceta confunda este proxy con un acceso
-      // directo al alias público de Vercel.
+      // Rewrite para Gaceta Institucional - mantiene la URL institucional
       {
         source: '/gaceta',
-        destination: 'https://gaceta-hilario-olveras-projects.vercel.app/gaceta?__meriadock_proxy=1',
+        destination: 'https://gaceta-hilario-olveras-projects.vercel.app/gaceta',
       },
       {
         source: '/gaceta/:path*',
-        destination: 'https://gaceta-hilario-olveras-projects.vercel.app/gaceta/:path*?__meriadock_proxy=1',
+        destination: 'https://gaceta-hilario-olveras-projects.vercel.app/gaceta/:path*',
       }
     ];
   }
