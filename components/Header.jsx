@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
 export default function Header() {
@@ -168,7 +169,8 @@ export default function Header() {
                     openWithCancel(closeTimerEjes);
                     setOpenEjes(true);
                   }}
-                  onBlur={() => closeWithDelay(closeTimerEjes, setOpenEjes)}
+                  onBlur={() => closeWithDelay(closeTimerEjes, setOpenEjes)
+                  }
                 >
                   Ejes ▾
                 </button>
@@ -228,6 +230,21 @@ export default function Header() {
 
 function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+
+  const navItemClass = (href) => {
+    const active = router.pathname === href;
+
+    return [
+      "flex min-h-[48px] items-center border-l-[3px] px-5 text-sm transition-colors",
+      active
+        ? "border-[#1E4C45] bg-[#F4F8F7] font-semibold text-[#1E4C45]"
+        : "border-transparent font-medium text-[#111827] hover:bg-[#F4F8F7] hover:text-[#1E4C45] focus-visible:bg-[#F4F8F7] focus-visible:text-[#1E4C45] focus-visible:outline-none",
+    ].join(" ");
+  };
+
+  const staticItemClass =
+    "flex min-h-[48px] items-center border-l-[3px] border-transparent px-5 text-sm font-medium text-[#111827]";
 
   return (
     <>
@@ -244,42 +261,78 @@ function MobileMenu() {
       {open && (
         <div
           id="mobile-main-menu"
-          className="xl:hidden bg-white border-t absolute left-0 right-0 top-full"
+          className="xl:hidden absolute left-0 right-0 top-full border-t border-[#E5E7EB] bg-white text-[#111827] shadow-lg"
         >
-          <div className="container mx-auto px-4 py-4">
-            <ul className="space-y-3 text-sm">
-              <li>
+          <div className="container mx-auto py-2">
+            <ul className="text-sm">
+              <li className="border-b border-[#E5E7EB]">
                 <details>
-                  <summary className="cursor-pointer">Conócenos</summary>
-                  <ul className="pl-4 mt-2 space-y-2">
-                    <li>Nuestro equipo</li>
-                    <li>Transparencia y convenios</li>
+                  <summary className="flex min-h-[48px] cursor-pointer items-center px-5 font-medium text-[#111827] transition-colors hover:bg-[#F4F8F7] hover:text-[#1E4C45] focus-visible:bg-[#F4F8F7] focus-visible:text-[#1E4C45] focus-visible:outline-none">
+                    Conócenos
+                  </summary>
+                  <ul className="border-t border-[#E5E7EB] bg-[#FAFBFB] py-1">
+                    <li className="flex min-h-[44px] items-center px-9 text-[#374151]">
+                      Nuestro equipo
+                    </li>
+                    <li className="flex min-h-[44px] items-center px-9 text-[#374151]">
+                      Transparencia y convenios
+                    </li>
                   </ul>
                 </details>
               </li>
 
-              <li>
+              <li className="border-b border-[#E5E7EB]">
                 <details>
-                  <summary className="cursor-pointer">Ejes</summary>
-                  <ul className="pl-4 mt-2 space-y-2">
-                    <li>Desarrollo social y comunitario</li>
-                    <li>Investigación y desarrollo</li>
-                    <li>Educación y formación</li>
+                  <summary className="flex min-h-[48px] cursor-pointer items-center px-5 font-medium text-[#111827] transition-colors hover:bg-[#F4F8F7] hover:text-[#1E4C45] focus-visible:bg-[#F4F8F7] focus-visible:text-[#1E4C45] focus-visible:outline-none">
+                    Ejes
+                  </summary>
+                  <ul className="border-t border-[#E5E7EB] bg-[#FAFBFB] py-1">
+                    <li className="flex min-h-[44px] items-center px-9 text-[#374151]">
+                      Desarrollo social y comunitario
+                    </li>
+                    <li className="flex min-h-[44px] items-center px-9 text-[#374151]">
+                      Investigación y desarrollo
+                    </li>
+                    <li className="flex min-h-[44px] items-center px-9 text-[#374151]">
+                      Educación y formación
+                    </li>
                   </ul>
                 </details>
               </li>
 
-              <li>
-                <Link href="/academia">Academia</Link>
+              <li className="border-b border-[#E5E7EB]">
+                <Link
+                  href="/academia"
+                  className={navItemClass("/academia")}
+                  onClick={() => setOpen(false)}
+                >
+                  Academia
+                </Link>
               </li>
-              <li>Tecnología</li>
-              <li>
-                <Link href="/dialogos-eleatas">Diálogos eleatas</Link>
+              <li className="border-b border-[#E5E7EB]">
+                <span className={staticItemClass}>Tecnología</span>
+              </li>
+              <li className="border-b border-[#E5E7EB]">
+                <Link
+                  href="/dialogos-eleatas"
+                  className={navItemClass("/dialogos-eleatas")}
+                  onClick={() => setOpen(false)}
+                >
+                  Diálogos eleatas
+                </Link>
+              </li>
+              <li className="border-b border-[#E5E7EB]">
+                <Link
+                  href="/gaceta"
+                  className={navItemClass("/gaceta")}
+                  onClick={() => setOpen(false)}
+                >
+                  Gaceta
+                </Link>
               </li>
               <li>
-                <Link href="/gaceta">Gaceta</Link>
+                <span className={staticItemClass}>Colabora</span>
               </li>
-              <li>Colabora</li>
             </ul>
           </div>
         </div>
