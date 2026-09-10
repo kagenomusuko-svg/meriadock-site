@@ -18,6 +18,7 @@ export default function Footer() {
                 width: 96,
                 height: 96,
                 objectFit: "contain",
+                borderRadius: "50%",
                 imageRendering: "auto",
               }}
             />
