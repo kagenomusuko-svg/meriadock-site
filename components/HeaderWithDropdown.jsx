@@ -7,8 +7,16 @@ export default function HeaderWithDropdown() {
   return (
     <header className="site-header fixed top-0 left-0 right-0 z-40 bg-white">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <img src="/logo.svg" alt="Logo AC" className="h-12 w-12 object-contain" />
+        <Link
+          href="/home"
+          className="flex items-center gap-3"
+          aria-label="Ir al inicio de Meriadock"
+        >
+          <img
+            src="/ac_seal.png"
+            alt="Sello del Centro Multidisciplinario Meriadock"
+            className="h-12 w-12 rounded-full object-contain"
+          />
           <div>
             <div className="text-sm font-semibold" style={{ color: "var(--meriadock-silver)" }}>
               Centro Multidisciplinario Meriadock
@@ -17,7 +25,7 @@ export default function HeaderWithDropdown() {
               Formación y Asesoría A.C.
             </div>
           </div>
-        </div>
+        </Link>
 
         <nav>
           <ul className="hidden md:flex gap-6 text-sm" style={{ color: "var(--meriadock-silver)" }}>
