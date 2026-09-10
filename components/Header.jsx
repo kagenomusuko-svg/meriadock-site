@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Header() {
   const [openConocenos, setOpenConocenos] = useState(false);
@@ -8,10 +8,13 @@ export default function Header() {
   const closeTimerEjes = useRef(null);
   const headerRef = useRef(null);
 
-  useEffect(() => () => {
-    clearTimeout(closeTimerConocenos.current);
-    clearTimeout(closeTimerEjes.current);
-  }, []);
+  useEffect(
+    () => () => {
+      clearTimeout(closeTimerConocenos.current);
+      clearTimeout(closeTimerEjes.current);
+    },
+    []
+  );
 
   function openWithCancel(ref) {
     clearTimeout(ref.current);
@@ -39,8 +42,10 @@ export default function Header() {
     if (!headerEl) return;
 
     function setOffset() {
-      const height = headerEl.offsetHeight || 0;
-      document.documentElement.style.setProperty("--header-offset", `${height}px`);
+      document.documentElement.style.setProperty(
+        "--header-offset",
+        `${headerEl.offsetHeight || 0}px`
+      );
     }
 
     setOffset();
@@ -61,13 +66,21 @@ export default function Header() {
   const dropdownStyle = {
     backgroundColor: "#1E4C45",
     color: "#ffffff",
+    borderColor: "#174036",
   };
 
   return (
     <>
-      <header ref={headerRef} className="site-header fixed top-0 left-0 right-0 z-40 bg-white">
+      <header
+        ref={headerRef}
+        className="site-header fixed top-0 left-0 right-0 z-40 bg-white"
+      >
         <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-6">
-          <Link href="/home" className="flex items-center gap-3 shrink-0" aria-label="Ir al inicio de Meriadock">
+          <Link
+            href="/home"
+            className="flex items-center gap-3 shrink-0"
+            aria-label="Ir al inicio de Meriadock"
+          >
             <img
               src="/logo.svg"
               alt="Logo AC"
@@ -78,10 +91,16 @@ export default function Header() {
               }}
             />
             <div>
-              <div className="text-sm font-semibold" style={{ color: "var(--meriadock-silver)" }}>
+              <div
+                className="text-sm font-semibold"
+                style={{ color: "var(--meriadock-silver)" }}
+              >
                 Centro Multidisciplinario Meriadock
               </div>
-              <div className="text-xs" style={{ color: "var(--meriadock-silver)" }}>
+              <div
+                className="text-xs"
+                style={{ color: "var(--meriadock-silver)" }}
+              >
                 Formación y Asesoría A.C.
               </div>
             </div>
@@ -94,15 +113,26 @@ export default function Header() {
             >
               <li
                 className="relative"
-                onMouseEnter={() => (openWithCancel(closeTimerConocenos), setOpenConocenos(true))}
-                onMouseLeave={() => closeWithDelay(closeTimerConocenos, setOpenConocenos)}
+                onMouseEnter={() => {
+                  openWithCancel(closeTimerConocenos);
+                  setOpenConocenos(true);
+                }}
+                onMouseLeave={() =>
+                  closeWithDelay(closeTimerConocenos, setOpenConocenos)
+                }
               >
                 <button
+                  type="button"
                   aria-haspopup="menu"
                   aria-expanded={openConocenos}
                   className="focus:outline-none"
-                  onFocus={() => (openWithCancel(closeTimerConocenos), setOpenConocenos(true))}
-                  onBlur={() => closeWithDelay(closeTimerConocenos, setOpenConocenos)}
+                  onFocus={() => {
+                    openWithCancel(closeTimerConocenos);
+                    setOpenConocenos(true);
+                  }}
+                  onBlur={() =>
+                    closeWithDelay(closeTimerConocenos, setOpenConocenos)
+                  }
                 >
                   Conócenos ▾
                 </button>
@@ -110,18 +140,12 @@ export default function Header() {
                 {openConocenos && (
                   <ul
                     role="menu"
-                    className="absolute top-full left-0 mt-2 border shadow-sm p-2 rounded z-50 min-w-[220px]"
-                    style={{ ...dropdownStyle, borderColor: "#174036" }}
+                    className="absolute top-full left-0 mt-2 border shadow-sm p-2 rounded z-50 min-w-[240px]"
+                    style={dropdownStyle}
                   >
-                    <li role="none" className="px-3 py-1">
-                      <Link role="menuitem" href="/nosotros/directorio">
-                        <span className="text-white">Nuestro equipo</span>
-                      </Link>
-                    </li>
-                    <li role="none" className="px-3 py-1">
-                      <Link role="menuitem" href="/transparencia/convenios">
-                        <span className="text-white">Convenios</span>
-                      </Link>
+                    <li className="px-3 py-1 text-white">Nuestro equipo</li>
+                    <li className="px-3 py-1 text-white">
+                      Transparencia y convenios
                     </li>
                   </ul>
                 )}
@@ -129,14 +153,21 @@ export default function Header() {
 
               <li
                 className="relative"
-                onMouseEnter={() => (openWithCancel(closeTimerEjes), setOpenEjes(true))}
+                onMouseEnter={() => {
+                  openWithCancel(closeTimerEjes);
+                  setOpenEjes(true);
+                }}
                 onMouseLeave={() => closeWithDelay(closeTimerEjes, setOpenEjes)}
               >
                 <button
+                  type="button"
                   aria-haspopup="menu"
                   aria-expanded={openEjes}
                   className="focus:outline-none"
-                  onFocus={() => (openWithCancel(closeTimerEjes), setOpenEjes(true))}
+                  onFocus={() => {
+                    openWithCancel(closeTimerEjes);
+                    setOpenEjes(true);
+                  }}
                   onBlur={() => closeWithDelay(closeTimerEjes, setOpenEjes)}
                 >
                   Ejes ▾
@@ -145,23 +176,17 @@ export default function Header() {
                 {openEjes && (
                   <ul
                     role="menu"
-                    className="absolute top-full left-0 mt-2 border shadow-sm p-2 rounded z-50 min-w-[260px]"
-                    style={{ ...dropdownStyle, borderColor: "#174036" }}
+                    className="absolute top-full left-0 mt-2 border shadow-sm p-2 rounded z-50 min-w-[270px]"
+                    style={dropdownStyle}
                   >
-                    <li role="none" className="px-3 py-1">
-                      <Link role="menuitem" href="/programas/eco">
-                        <span className="text-white">Desarrollo social y comunitario</span>
-                      </Link>
+                    <li className="px-3 py-1 text-white">
+                      Desarrollo social y comunitario
                     </li>
-                    <li role="none" className="px-3 py-1">
-                      <Link role="menuitem" href="/programas/rio">
-                        <span className="text-white">Investigación y desarrollo</span>
-                      </Link>
+                    <li className="px-3 py-1 text-white">
+                      Investigación y desarrollo
                     </li>
-                    <li role="none" className="px-3 py-1">
-                      <Link role="menuitem" href="/programas/manos">
-                        <span className="text-white">Educación y formación</span>
-                      </Link>
+                    <li className="px-3 py-1 text-white">
+                      Educación y formación
                     </li>
                   </ul>
                 )}
@@ -171,22 +196,16 @@ export default function Header() {
                 <Link href="/academia">Academia</Link>
               </li>
               <li>
-                <span
-                  aria-disabled="true"
-                  title="Próximamente"
-                  className="cursor-default opacity-70"
-                >
-                  Tecnología
-                </span>
+                <span>Tecnología</span>
               </li>
               <li>
-                <Link href="/dialogos-eleatas">Diálogos Eleatas</Link>
+                <Link href="/dialogos-eleatas">Diálogos eleatas</Link>
               </li>
               <li>
                 <Link href="/gaceta">Gaceta</Link>
               </li>
               <li>
-                <Link href="/colaboracion">Colabora</Link>
+                <span>Colabora</span>
               </li>
             </ul>
           </nav>
@@ -196,7 +215,10 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="border-t" style={{ borderColor: "rgba(217,217,217,0.08)" }} />
+        <div
+          className="border-t"
+          style={{ borderColor: "rgba(217,217,217,0.08)" }}
+        />
       </header>
 
       <div aria-hidden="true" style={{ height: "var(--header-offset)" }} />
@@ -210,6 +232,7 @@ function MobileMenu() {
   return (
     <>
       <button
+        type="button"
         onClick={() => setOpen((current) => !current)}
         className="text-sm"
         aria-expanded={open}
@@ -219,15 +242,18 @@ function MobileMenu() {
       </button>
 
       {open && (
-        <div id="mobile-main-menu" className="xl:hidden bg-white border-t absolute left-0 right-0 top-full">
+        <div
+          id="mobile-main-menu"
+          className="xl:hidden bg-white border-t absolute left-0 right-0 top-full"
+        >
           <div className="container mx-auto px-4 py-4">
             <ul className="space-y-3 text-sm">
               <li>
                 <details>
                   <summary className="cursor-pointer">Conócenos</summary>
                   <ul className="pl-4 mt-2 space-y-2">
-                    <li><Link href="/nosotros/directorio">Nuestro equipo</Link></li>
-                    <li><Link href="/transparencia/convenios">Convenios</Link></li>
+                    <li>Nuestro equipo</li>
+                    <li>Transparencia y convenios</li>
                   </ul>
                 </details>
               </li>
@@ -236,22 +262,24 @@ function MobileMenu() {
                 <details>
                   <summary className="cursor-pointer">Ejes</summary>
                   <ul className="pl-4 mt-2 space-y-2">
-                    <li><Link href="/programas/eco">Desarrollo social y comunitario</Link></li>
-                    <li><Link href="/programas/rio">Investigación y desarrollo</Link></li>
-                    <li><Link href="/programas/manos">Educación y formación</Link></li>
+                    <li>Desarrollo social y comunitario</li>
+                    <li>Investigación y desarrollo</li>
+                    <li>Educación y formación</li>
                   </ul>
                 </details>
               </li>
 
-              <li><Link href="/academia">Academia</Link></li>
               <li>
-                <span aria-disabled="true" title="Próximamente" className="opacity-60">
-                  Tecnología — Próximamente
-                </span>
+                <Link href="/academia">Academia</Link>
               </li>
-              <li><Link href="/dialogos-eleatas">Diálogos Eleatas</Link></li>
-              <li><Link href="/gaceta">Gaceta</Link></li>
-              <li><Link href="/colaboracion">Colabora</Link></li>
+              <li>Tecnología</li>
+              <li>
+                <Link href="/dialogos-eleatas">Diálogos eleatas</Link>
+              </li>
+              <li>
+                <Link href="/gaceta">Gaceta</Link>
+              </li>
+              <li>Colabora</li>
             </ul>
           </div>
         </div>
