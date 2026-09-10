@@ -83,13 +83,9 @@ export default function Header() {
             aria-label="Ir al inicio de Meriadock"
           >
             <img
-              src="/logo.svg"
-              alt="Logo AC"
-              className="h-12 w-auto object-contain"
-              style={{
-                filter: "grayscale(1) brightness(0.95) invert(0.95) saturate(0%)",
-                color: "#D9D9D9",
-              }}
+              src="/ac_seal.png"
+              alt="Sello del Centro Multidisciplinario Meriadock"
+              className="h-12 w-12 rounded-full object-contain"
             />
             <div>
               <div
