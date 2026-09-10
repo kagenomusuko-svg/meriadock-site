@@ -1,8 +1,10 @@
+@import url("/assets/css/globals.css");
+
 /* =========================
    Estilos generales
 ========================= */
 body {
-  font-family: "Times New Roman", serif;
+  font-family: var(--meriadock-font);
   font-size: 12pt;
   color: #000000;
   line-height: 1.5;
@@ -13,7 +15,7 @@ body {
    Títulos
 ========================= */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Times New Roman", serif;
+  font-family: var(--meriadock-font);
   font-weight: bold;
   color: #000000;
 }
@@ -42,4 +44,3 @@ ol {
   padding-left: 20px;
   margin-bottom: 10px;
 }
-

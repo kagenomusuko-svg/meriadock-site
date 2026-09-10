@@ -1,3 +1,5 @@
+@import url("/assets/css/globals.css");
+
 /* ==========================
    Estilos para páginas de programas
 ========================== */
@@ -13,7 +15,7 @@
 
 /* Contenedor del contenido HTML del programa */
 .contenido-html {
-    font-family: 'Times New Roman', serif;
+    font-family: var(--meriadock-font);
     font-size: 12pt;
     line-height: 1.5;
     color: #000000;
@@ -55,7 +57,7 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
-    font-family: 'Times New Roman', serif;
+    font-family: var(--meriadock-font);
 }
 
 .contenido-html th, .contenido-html td {
@@ -87,11 +89,11 @@
     border-radius: 5px;
     text-decoration: none;
     color: #000;
-    font-family: 'Times New Roman', serif;
+    font-family: var(--meriadock-font);
     font-weight: bold;
 }
 
 .macro:hover {
-    background-color: #f0e0c0; /* color un poco más oscuro al pasar el mouse */
+    background-color: #f0e0c0; /* color un poco más oscuro al pasar */
     cursor: pointer;
 }

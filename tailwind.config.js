@@ -4,6 +4,11 @@ module.exports = {
     "./components/**/*.{js,jsx}"
   ],
   theme: {
+    fontFamily: {
+      sans: ["EB Garamond", "Garamond", "Times New Roman", "Times", "serif"],
+      serif: ["EB Garamond", "Garamond", "Times New Roman", "Times", "serif"],
+      mono: ["EB Garamond", "Garamond", "Times New Roman", "Times", "serif"]
+    },
     extend: {
       colors: {
         meriadock: {
