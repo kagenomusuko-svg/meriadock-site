@@ -6,21 +6,22 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-start gap-6">
         {/* Columna izquierda: sello grande + nombre + frase */}
         <div className="flex items-start gap-4">
-          <img
-            src="/logo.svg"
-            alt="Logo AC"
-            // tamaño mayor para que se vea más nítido; ajusta width/height si quieres más zoom
-            style={{
-              width: 96,
-              height: 96,
-              objectFit: "contain",
-              // mismo filtro que en header para aproximar plateado (#D9D9D9)
-              filter: "grayscale(1) brightness(0.95) invert(0.95) saturate(0%)",
-              imageRendering: "optimizeQuality",
-              // some browsers respect this
-              color: "#D9D9D9",
-            }}
-          />
+          <Link
+            href="/home"
+            aria-label="Ir al inicio de Meriadock"
+            className="shrink-0"
+          >
+            <img
+              src="/ac_seal.png"
+              alt="Sello del Centro Multidisciplinario Meriadock"
+              style={{
+                width: 96,
+                height: 96,
+                objectFit: "contain",
+                imageRendering: "auto",
+              }}
+            />
+          </Link>
 
           <div>
             <div className="font-semibold" style={{ color: "var(--meriadock-silver)" }}>
