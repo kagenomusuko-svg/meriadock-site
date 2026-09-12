@@ -5,14 +5,17 @@ import { useEffect, useRef, useState } from "react";
 export default function Header() {
   const [openConocenos, setOpenConocenos] = useState(false);
   const [openEjes, setOpenEjes] = useState(false);
+  const [openTecnologia, setOpenTecnologia] = useState(false);
   const closeTimerConocenos = useRef(null);
   const closeTimerEjes = useRef(null);
+  const closeTimerTecnologia = useRef(null);
   const headerRef = useRef(null);
 
   useEffect(
     () => () => {
       clearTimeout(closeTimerConocenos.current);
       clearTimeout(closeTimerEjes.current);
+      clearTimeout(closeTimerTecnologia.current);
     },
     []
   );
@@ -31,6 +34,7 @@ export default function Header() {
       if (event.key === "Escape") {
         setOpenConocenos(false);
         setOpenEjes(false);
+        setOpenTecnologia(false);
       }
     }
 
@@ -192,9 +196,51 @@ export default function Header() {
               <li>
                 <Link href="/academia">Academia</Link>
               </li>
-              <li>
-                <Link href="/tecnologia/aqorath">Tecnología</Link>
+
+              <li
+                className="relative"
+                onMouseEnter={() => {
+                  openWithCancel(closeTimerTecnologia);
+                  setOpenTecnologia(true);
+                }}
+                onMouseLeave={() =>
+                  closeWithDelay(closeTimerTecnologia, setOpenTecnologia)
+                }
+              >
+                <button
+                  type="button"
+                  aria-haspopup="menu"
+                  aria-expanded={openTecnologia}
+                  className="focus:outline-none"
+                  onFocus={() => {
+                    openWithCancel(closeTimerTecnologia);
+                    setOpenTecnologia(true);
+                  }}
+                  onBlur={() =>
+                    closeWithDelay(closeTimerTecnologia, setOpenTecnologia)
+                  }
+                >
+                  Tecnología ▾
+                </button>
+
+                {openTecnologia && (
+                  <ul
+                    role="menu"
+                    className="absolute top-full left-0 mt-2 border shadow-sm p-2 rounded z-50 min-w-[200px]"
+                    style={dropdownStyle}
+                  >
+                    <li>
+                      <Link
+                        href="/tecnologia/aqorath"
+                        className="block px-3 py-1 text-white"
+                      >
+                        Aqorath
+                      </Link>
+                    </li>
+                  </ul>
+                )}
               </li>
+
               <li>
                 <Link href="/dialogos-eleatas">Diálogos eleatas</Link>
               </li>
@@ -304,15 +350,26 @@ function MobileMenu() {
                   Academia
                 </Link>
               </li>
+
               <li className="border-b border-[#E5E7EB]">
-                <Link
-                  href="/tecnologia/aqorath"
-                  className={navItemClass("/tecnologia/aqorath")}
-                  onClick={() => setOpen(false)}
-                >
-                  Tecnología
-                </Link>
+                <details>
+                  <summary className="flex min-h-[48px] cursor-pointer items-center px-5 font-medium text-[#111827] transition-colors hover:bg-[#F4F8F7] hover:text-[#1E4C45] focus-visible:bg-[#F4F8F7] focus-visible:text-[#1E4C45] focus-visible:outline-none">
+                    Tecnología
+                  </summary>
+                  <ul className="border-t border-[#E5E7EB] bg-[#FAFBFB] py-1">
+                    <li>
+                      <Link
+                        href="/tecnologia/aqorath"
+                        className="flex min-h-[44px] items-center px-9 text-[#374151] transition-colors hover:text-[#1E4C45] focus-visible:text-[#1E4C45] focus-visible:outline-none"
+                        onClick={() => setOpen(false)}
+                      >
+                        Aqorath
+                      </Link>
+                    </li>
+                  </ul>
+                </details>
               </li>
+
               <li className="border-b border-[#E5E7EB]">
                 <Link
                   href="/dialogos-eleatas"
