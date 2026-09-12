@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="site-footer mt-8">
-      <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-start gap-6">
+      <div className="container mx-auto px-4 py-5 flex flex-col md:flex-row justify-between items-start gap-4">
         {/* Columna izquierda: sello grande + nombre + frase */}
         <div className="flex items-start gap-4">
           <Link
@@ -28,7 +28,7 @@ export default function Footer() {
             <div className="font-semibold" style={{ color: "var(--meriadock-silver)" }}>
               Centro Multidisciplinario Meriadock
             </div>
-            <div className="text-sm mb-2" style={{ color: "var(--meriadock-silver)" }}>
+            <div className="text-sm mb-1" style={{ color: "var(--meriadock-silver)" }}>
               Formación y Asesoría A.C.
             </div>
 
@@ -39,12 +39,12 @@ export default function Footer() {
         </div>
 
         {/* Columnas de menú */}
-        <div className="flex gap-8 text-sm">
+        <div className="flex gap-6 text-sm">
           <div>
             <h4 className="font-semibold" style={{ color: "var(--meriadock-silver)" }}>
               Institucional
             </h4>
-            <ul className="mt-2" style={{ color: "var(--meriadock-silver)" }}>
+            <ul className="mt-1" style={{ color: "var(--meriadock-silver)" }}>
               <li>
                 <Link href="/transparencia">Transparencia</Link>
               </li>
@@ -64,10 +64,10 @@ export default function Footer() {
             <h4 className="font-semibold" style={{ color: "var(--meriadock-silver)" }}>
               Contáctanos
             </h4>
-            <div className="mt-2" style={{ color: "var(--meriadock-silver)" }}>
+            <div className="mt-1" style={{ color: "var(--meriadock-silver)" }}>
               contacto@meriadock.org.mx
             </div>
-            <div className="mt-3 flex gap-3" style={{ color: "var(--meriadock-silver)" }}>
+            <div className="mt-2 flex gap-3" style={{ color: "var(--meriadock-silver)" }}>
               <a
                 href="https://www.youtube.com/@CentroMeriadock"
                 target="_blank"
@@ -80,7 +80,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t py-4" style={{ borderColor: "rgba(217,217,217,0.08)" }}>
+      <div className="border-t py-2" style={{ borderColor: "rgba(217,217,217,0.08)" }}>
         <div className="container mx-auto px-4 text-sm" style={{ color: "var(--meriadock-silver)" }}>
           © {new Date().getFullYear()} Centro Multidisciplinario Meriadock — Todos los derechos reservados.
         </div>
