@@ -38,7 +38,7 @@ function AqorathHeader() {
 function AqorathFooter() {
   return (
     <footer className="site-footer mt-8">
-      <div className="mx-auto flex max-w-[1100px] flex-col items-start justify-between gap-6 px-4 py-8 md:flex-row">
+      <div className="mx-auto flex max-w-[1100px] flex-col items-start justify-between gap-4 px-4 py-5 md:flex-row">
         <div className="flex items-start gap-4">
           <a
             href={`${SITE_URL}/home`}
@@ -62,7 +62,7 @@ function AqorathFooter() {
             <div className="font-semibold text-[var(--meriadock-silver)]">
               Centro Multidisciplinario Meriadock
             </div>
-            <div className="mb-2 text-sm text-[var(--meriadock-silver)]">
+            <div className="mb-1 text-sm text-[var(--meriadock-silver)]">
               Formación y Asesoría A.C.
             </div>
             <div className="text-sm italic text-[var(--meriadock-silver)]">
@@ -82,7 +82,7 @@ function AqorathFooter() {
       </div>
 
       <div
-        className="border-t py-4"
+        className="border-t py-2"
         style={{ borderColor: "rgba(217,217,217,0.08)" }}
       >
         <div className="mx-auto max-w-[1100px] px-4 text-sm text-[var(--meriadock-silver)]">
