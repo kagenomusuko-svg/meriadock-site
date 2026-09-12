@@ -1,6 +1,97 @@
 import Head from "next/head";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import Link from "next/link";
+
+const SITE_URL = "https://www.meriadock.org.mx";
+
+function AqorathHeader() {
+  return (
+    <header className="site-header">
+      <div className="container mx-auto flex min-h-[80px] items-center px-4 py-3">
+        <Link
+          href="/home"
+          className="flex items-center gap-3"
+          aria-label="Ir al inicio de Meriadock"
+        >
+          <img
+            src="/ac_seal.png"
+            alt="Sello del Centro Multidisciplinario Meriadock"
+            className="h-12 w-12 rounded-full object-contain"
+          />
+          <span className="grid leading-tight">
+            <strong className="text-sm font-semibold text-[var(--meriadock-silver)]">
+              Centro Multidisciplinario Meriadock
+            </strong>
+            <small className="mt-1 text-xs text-[var(--meriadock-silver)]">
+              Formación y Asesoría A.C.
+            </small>
+          </span>
+        </Link>
+      </div>
+      <div
+        className="border-t"
+        style={{ borderColor: "rgba(217,217,217,0.08)" }}
+      />
+    </header>
+  );
+}
+
+function AqorathFooter() {
+  return (
+    <footer className="site-footer mt-8">
+      <div className="mx-auto flex max-w-[1100px] flex-col items-start justify-between gap-6 px-4 py-8 md:flex-row">
+        <div className="flex items-start gap-4">
+          <a
+            href={`${SITE_URL}/home`}
+            aria-label="Ir al sitio principal de Centro Multidisciplinario Meriadock"
+            className="shrink-0"
+          >
+            <img
+              src={`${SITE_URL}/ac_seal.png`}
+              alt="Sello del Centro Multidisciplinario Meriadock"
+              style={{
+                width: 96,
+                height: 96,
+                objectFit: "contain",
+                borderRadius: "50%",
+                imageRendering: "auto",
+              }}
+            />
+          </a>
+
+          <div>
+            <div className="font-semibold text-[var(--meriadock-silver)]">
+              Centro Multidisciplinario Meriadock
+            </div>
+            <div className="mb-2 text-sm text-[var(--meriadock-silver)]">
+              Formación y Asesoría A.C.
+            </div>
+            <div className="text-sm italic text-[var(--meriadock-silver)]">
+              &quot;La fuerza interior nos impulsa, un pequeño apoyo de los demás nos bendice&quot;
+            </div>
+          </div>
+        </div>
+
+        <div className="text-sm">
+          <a
+            className="text-[var(--meriadock-silver)] transition hover:text-white"
+            href={`${SITE_URL}/aviso-de-privacidad`}
+          >
+            Aviso de Privacidad
+          </a>
+        </div>
+      </div>
+
+      <div
+        className="border-t py-4"
+        style={{ borderColor: "rgba(217,217,217,0.08)" }}
+      >
+        <div className="mx-auto max-w-[1100px] px-4 text-sm text-[var(--meriadock-silver)]">
+          © {new Date().getFullYear()} Centro Multidisciplinario Meriadock — Todos los derechos reservados.
+        </div>
+      </div>
+    </footer>
+  );
+}
 
 export default function AqorathTechnologyFallback() {
   return (
@@ -12,7 +103,7 @@ export default function AqorathTechnologyFallback() {
           content="Aqorath, desarrollo tecnológico de Centro Multidisciplinario Meriadock Formación y Asesoría A.C."
         />
       </Head>
-      <Header />
+      <AqorathHeader />
       <main>
         <section
           style={{
@@ -50,7 +141,7 @@ export default function AqorathTechnologyFallback() {
           </h1>
         </section>
       </main>
-      <Footer />
+      <AqorathFooter />
     </>
   );
 }
