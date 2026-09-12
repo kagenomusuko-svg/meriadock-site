@@ -37,7 +37,7 @@ function AqorathHeader() {
 
 function AqorathFooter() {
   return (
-    <footer className="site-footer mt-8">
+    <footer className="site-footer">
       <div className="mx-auto flex max-w-[1100px] flex-col items-start justify-between gap-4 px-4 py-5 md:flex-row">
         <div className="flex items-start gap-4">
           <a
@@ -95,7 +95,14 @@ function AqorathFooter() {
 
 export default function AqorathTechnologyFallback() {
   return (
-    <>
+    <div
+      style={{
+        minHeight: "100vh",
+        minHeight: "100dvh",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <Head>
         <title>Aqorath | Tecnología Meriadock</title>
         <meta
@@ -104,9 +111,10 @@ export default function AqorathTechnologyFallback() {
         />
       </Head>
       <AqorathHeader />
-      <main>
+      <main style={{ flex: "1 0 auto", display: "flex" }}>
         <section
           style={{
+            flex: 1,
             minHeight: "52vh",
             display: "flex",
             flexDirection: "column",
@@ -142,6 +150,6 @@ export default function AqorathTechnologyFallback() {
         </section>
       </main>
       <AqorathFooter />
-    </>
+    </div>
   );
 }
