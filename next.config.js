@@ -1,4 +1,6 @@
 /** Archivo de configuración Next.js mínimo */
+const aqorathTechnologyOrigin = process.env.AQORATH_TECHNOLOGY_ORIGIN?.replace(/\/$/, '');
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -22,7 +24,7 @@ const nextConfig = {
     ];
   },
   async rewrites() {
-    return [
+    const routes = [
       // Rewrite para Academia Meriadock - mantiene la URL en el navegador
       {
         source: '/academia',
@@ -51,6 +53,24 @@ const nextConfig = {
         destination: 'https://gaceta-hilario-olveras-projects.vercel.app/gaceta/:path*',
       }
     ];
+
+    // Aqorath se habilita como microfrontend cuando exista un origen desplegado.
+    // Mientras tanto, /tecnologia/aqorath usa la página fallback institucional local,
+    // evitando publicar una ruta rota durante el alta inicial del proyecto.
+    if (aqorathTechnologyOrigin) {
+      routes.unshift(
+        {
+          source: '/tecnologia/aqorath',
+          destination: `${aqorathTechnologyOrigin}/tecnologia/aqorath`,
+        },
+        {
+          source: '/tecnologia/aqorath/:path*',
+          destination: `${aqorathTechnologyOrigin}/tecnologia/aqorath/:path*`,
+        }
+      );
+    }
+
+    return routes;
   }
 };
 

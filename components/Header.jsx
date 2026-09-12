@@ -165,8 +165,7 @@ export default function Header() {
                     openWithCancel(closeTimerEjes);
                     setOpenEjes(true);
                   }}
-                  onBlur={() => closeWithDelay(closeTimerEjes, setOpenEjes)
-                  }
+                  onBlur={() => closeWithDelay(closeTimerEjes, setOpenEjes)}
                 >
                   Ejes ▾
                 </button>
@@ -194,7 +193,7 @@ export default function Header() {
                 <Link href="/academia">Academia</Link>
               </li>
               <li>
-                <span>Tecnología</span>
+                <Link href="/tecnologia/aqorath">Tecnología</Link>
               </li>
               <li>
                 <Link href="/dialogos-eleatas">Diálogos eleatas</Link>
@@ -306,7 +305,13 @@ function MobileMenu() {
                 </Link>
               </li>
               <li className="border-b border-[#E5E7EB]">
-                <span className={staticItemClass}>Tecnología</span>
+                <Link
+                  href="/tecnologia/aqorath"
+                  className={navItemClass("/tecnologia/aqorath")}
+                  onClick={() => setOpen(false)}
+                >
+                  Tecnología
+                </Link>
               </li>
               <li className="border-b border-[#E5E7EB]">
                 <Link
