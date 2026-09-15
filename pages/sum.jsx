@@ -8,17 +8,17 @@ import ConceptArticle, {
 export default function Sum() {
   return (
     <ConceptArticle
-      title="Sum"
+      title="Mediación prima"
       kicker="Concepto ontológico"
       description="El ser en tanto está o la permanencia, devenir y determinación del ser"
     >
       <ConceptSection id="definicion" title="Definición">
         <DefinitionBox>
           <p>
-            <strong>Sum:</strong> fenómeno ontológico completo en el que ser y estar constituyen ejes
+            <strong>Mediación prima:</strong> fenómeno ontológico completo en el que ser y estar constituyen ejes
             intrínsecos e inseparables. El ser expresa la permanencia y continuidad de aquello que es;
             el estar expresa su determinación, devenir y colapso dentro del infinito de posibilidades.
-            Ninguno puede sustraerse del otro sin destruir aquello que el concepto pretende nombrar.
+            Ninguno puede sustraerse del otro sin destruir aquello que el concepto pretende nombrar. También llamada sum
           </p>
         </DefinitionBox>
 
@@ -168,7 +168,7 @@ export default function Sum() {
         </div>
 
         <Formula label="Mismo fenómeno, distintos ejes">
-          <span>Sum → ser / permanencia ; Sum → estar / devenir</span>
+          <span>Mediación prima → ser / permanencia ; Mediación prima → estar / devenir</span>
         </Formula>
 
         <p>
@@ -379,7 +379,7 @@ export default function Sum() {
         </p>
 
         <Formula label="Fenómeno completo">
-          <span>Sum → permanencia / devenir / determinación</span>
+          <span>Mediación prima → permanencia / devenir / determinación</span>
         </Formula>
       </ConceptSection>
     </ConceptArticle>
