@@ -304,8 +304,7 @@ export default function Sum() {
 
       <ConceptSection id="casos" title="Casos de frontera: personaje, sujeto y divinidad">
         <p>
-          La univocidad puede hacerse visible mediante casos deliberadamente heterogéneos: Shaka de
-          Virgo, Gandalf, Don Quijote, Gandhi, Zeus o Yahvé. Afirmar que todos son no significa afirmar que
+          La univocidad puede hacerse visible mediante casos deliberadamente heterogéneos: Don Quijote, Gandhi, Zeus o Yahvé. Afirmar que todos son no significa afirmar que
           todos existan del mismo modo.
         </p>
 
