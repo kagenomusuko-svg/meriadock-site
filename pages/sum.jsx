@@ -355,7 +355,7 @@ export default function Sum() {
         </p>
 
         <p>
-          En conjunto, las tres piezas cumplen funciones distintas: <strong>sum</strong> delimita el
+          En conjunto, las tres piezas cumplen funciones distintas: <strong>mediación prima</strong> delimita el
           fenómeno; <strong>el puente rawlsiano</strong> audita los tránsitos; y
           <strong> la tautología euclidiana</strong> audita los cierres constitutivos.
         </p>
