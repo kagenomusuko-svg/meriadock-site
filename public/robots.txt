@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# Endpoints técnicos
+Disallow: /api/
+Disallow: /academia/api/
+Disallow: /dialogos-eleatas/api/
+Disallow: /gaceta/api/
+
+# Academia: áreas de cuenta, administración y formación autenticada
+Disallow: /academia/admin/
+Disallow: /academia/dashboard
+Disallow: /academia/profile
+Disallow: /academia/login
+Disallow: /academia/register
+Disallow: /academia/forgot-password
+Disallow: /academia/reset-password
+Disallow: /academia/account-inactive
+Disallow: /academia/account-suspended
+Disallow: /academia/formacion/
+
+# URLs con tokens o datos de certificados: accesibles para verificación, no para rastreo masivo
+Disallow: /academia/certificado/
+Disallow: /academia/verificar/
+Disallow: /academia/verificar-certificado/
+
+Sitemap: https://www.meriadock.org.mx/sitemap.xml
