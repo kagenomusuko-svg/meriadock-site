@@ -97,12 +97,6 @@ export default function Sum() {
         <Formula label="Estructura">
           <span>identidad/sesgo + voluntad/pasión + primera mediación</span>
         </Formula>
-
-        <p>
-          Esta forma sintética conserva la nomenclatura de la obra. En su formalización, la primera
-          mediación aparece como φ₁: V × C × H → A: el operador que produce un acto a partir del estado
-          interno, la configuración heredada y la historia.
-        </p>
       </ConceptSection>
 
       <ConceptSection id="caos" title="Caos, infinito y determinación">
