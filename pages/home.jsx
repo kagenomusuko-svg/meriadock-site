@@ -4,40 +4,32 @@ import Footer from "../components/Footer";
 import Link from "next/link";
 
 export default function Home() {
-  const [news] = useState([
-    {
-      id: 1,
-      title: "Nueva convocatoria de becas 2024",
-      description: "Abierta la inscripción para nuestro programa de formación profesional",
-      date: "15 de agosto, 2024",
-    },
-    {
-      id: 2,
-      title: "Resultados del proyecto RED",
-      description: "Conoce los avances de nuestro eje de investigación y desarrollo",
-      date: "12 de agosto, 2024",
-    },
-    {
-      id: 3,
-      title: "Taller de capacitación MANOS",
-      description: "Próxima sesión: desarrollo comunitario y emprendimiento",
-      date: "8 de agosto, 2024",
-    },
-    {
-      id: 4,
-      title: "Iniciativa RIO: conexión comunitaria",
-      description: "Nuevo ciclo de talleres y encuentros comunitarios",
-      date: "5 de agosto, 2024",
-    },
-    {
-      id: 5,
-      title: "Publicación de investigación",
-      description: "Artículo disponible sobre metodologías de impacto social",
-      date: "1 de agosto, 2024",
-    },
-  ]);
-
+  const [publications, setPublications] = useState([]);
+  const [publicationsLoading, setPublicationsLoading] = useState(true);
   const carouselRef = useRef(null);
+
+  useEffect(() => {
+    let active = true;
+
+    async function loadPublications() {
+      try {
+        const response = await fetch("/api/publicaciones");
+        if (!response.ok) throw new Error("No fue posible cargar las publicaciones");
+        const data = await response.json();
+        if (active) setPublications(Array.isArray(data) ? data : []);
+      } catch (error) {
+        console.error(error);
+        if (active) setPublications([]);
+      } finally {
+        if (active) setPublicationsLoading(false);
+      }
+    }
+
+    loadPublications();
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <>
@@ -53,22 +45,57 @@ export default function Home() {
 
         <div className="divider"></div>
 
-        {/* 2. NOTICIAS Y CONVOCATORIAS - CARRUSEL */}
-        <section className="news-section">
-          <h2 className="section-title">Noticias y convocatorias</h2>
+        {/* 2. PUBLICACIONES - CARRUSEL */}
+        <section className="publications-section">
+          <h2 className="section-title">Publicaciones</h2>
 
           <div className="carousel-container">
             <div className="carousel-track" ref={carouselRef}>
-              {news.map((item) => (
-                <article key={item.id} className="news-card">
-                  <div className="news-card-img">[Imagen]</div>
-                  <div className="news-card-content">
-                    <h4>{item.title}</h4>
-                    <p>{item.description}</p>
-                    <span className="news-date">{item.date}</span>
-                  </div>
-                </article>
-              ))}
+              {publicationsLoading ? (
+                <div className="publications-status">Cargando publicaciones…</div>
+              ) : publications.length ? (
+                publications.map((item) => (
+                  <a
+                    key={item.id}
+                    href={item.pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="publication-card-link"
+                    aria-label={`Abrir ${item.title}: ${item.subtitle} en PDF`}
+                  >
+                    <article className="publication-card">
+                      <div className="publication-cover-wrap">
+                        <img
+                          src={item.coverUrl}
+                          alt={`Portada de ${item.title}: ${item.subtitle}`}
+                          className="publication-cover"
+                          loading="lazy"
+                        />
+                      </div>
+
+                      <div className="publication-card-content">
+                        {item.volume ? (
+                          <span className="publication-volume">{item.volume}</span>
+                        ) : null}
+                        <h4>{item.title}</h4>
+                        <p className="publication-subtitle">{item.subtitle}</p>
+                        {item.description ? (
+                          <p className="publication-description">{item.description}</p>
+                        ) : null}
+                        <div className="publication-meta">
+                          <span>{item.author}</span>
+                          <span>{item.year}</span>
+                        </div>
+                        <span className="publication-action">Abrir PDF →</span>
+                      </div>
+                    </article>
+                  </a>
+                ))
+              ) : (
+                <div className="publications-status">
+                  No hay publicaciones disponibles en este momento.
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -78,7 +105,6 @@ export default function Home() {
         {/* 3. QUIÉNES SOMOS / QUÉ HACEMOS */}
         <section className="about-section">
           <div className="about-grid">
-            {/* Quiénes somos */}
             <div className="about-column">
               <h3>Quiénes somos</h3>
               <p>
@@ -90,7 +116,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Qué hacemos */}
             <div className="about-column">
               <h3>Qué hacemos</h3>
               <ul className="axes-list">
