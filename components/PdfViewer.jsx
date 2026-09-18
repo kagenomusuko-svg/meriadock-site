@@ -7,6 +7,7 @@ export default function PdfViewer({ url, title }) {
   const [totalPages, setTotalPages] = useState(0);
   const [scale, setScale] = useState(1.25);
   const [loading, setLoading] = useState(true);
+  const [rendering, setRendering] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -43,24 +44,36 @@ export default function PdfViewer({ url, title }) {
   }, [url]);
 
   useEffect(() => {
+    let active = true;
+
     async function renderPage() {
       if (!pdf || !canvasRef.current) return;
 
-      const currentPage = await pdf.getPage(page);
-      const viewport = currentPage.getViewport({ scale });
-      const canvas = canvasRef.current;
-      const context = canvas.getContext("2d");
+      setRendering(true);
 
-      canvas.width = viewport.width;
-      canvas.height = viewport.height;
+      try {
+        const currentPage = await pdf.getPage(page);
+        const viewport = currentPage.getViewport({ scale });
+        const canvas = canvasRef.current;
+        const context = canvas.getContext("2d");
 
-      await currentPage.render({
-        canvasContext: context,
-        viewport,
-      }).promise;
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        await currentPage.render({
+          canvasContext: context,
+          viewport,
+        }).promise;
+      } finally {
+        if (active) setRendering(false);
+      }
     }
 
     renderPage();
+
+    return () => {
+      active = false;
+    };
   }, [pdf, page, scale]);
 
   if (loading) {
@@ -89,6 +102,11 @@ export default function PdfViewer({ url, title }) {
         <button onClick={() => setScale((s) => Math.max(0.75, s - 0.1))}>−</button>
         <button onClick={() => setScale((s) => s + 0.1)}>+</button>
       </div>
+
+      {rendering ? (
+        <div className="pdf-viewer-status">Renderizando página…</div>
+      ) : null}
+
       <canvas ref={canvasRef} className="pdf-viewer-canvas" />
     </div>
   );
