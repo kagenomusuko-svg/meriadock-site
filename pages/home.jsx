@@ -55,13 +55,11 @@ export default function Home() {
                 <div className="publications-status">Cargando publicaciones…</div>
               ) : publications.length ? (
                 publications.map((item) => (
-                  <a
+                  <Link
                     key={item.id}
-                    href={item.pdfUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={item.readerUrl || item.pdfUrl}
                     className="publication-card-link"
-                    aria-label={`Abrir ${item.title}: ${item.subtitle} en PDF`}
+                    aria-label={`Leer ${item.title}: ${item.subtitle}`}
                   >
                     <article className="publication-card">
                       <div className="publication-cover-wrap">
@@ -86,10 +84,10 @@ export default function Home() {
                           <span>{item.author}</span>
                           <span>{item.year}</span>
                         </div>
-                        <span className="publication-action">Abrir PDF →</span>
+                        <span className="publication-action">Leer publicación →</span>
                       </div>
                     </article>
-                  </a>
+                  </Link>
                 ))
               ) : (
                 <div className="publications-status">
