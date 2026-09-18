@@ -22,6 +22,7 @@ const publications = [
     volume: "Volumen II",
     author: "Miguel Hilario Olvera Aguilar",
     year: 2026,
+    doi: "10.5281/zenodo.19601149",
     description:
       "Una ontología de las formas que adopta la voluntad al orientarse hacia la alteridad: Eros, Deimos, Anteros, Fobos, Potós y Harmonía.",
     coverUrl: "/publicaciones/libros/afrodita-areia/portada-volumen-II.png",
@@ -73,6 +74,7 @@ export default function Home() {
                       <div className="publication-meta">
                         <span>{item.author}</span>
                         <span>{item.year}</span>
+                        {item.doi && <span>DOI {item.doi}</span>}
                       </div>
                       <span className="publication-action">Leer publicación →</span>
                     </div>
