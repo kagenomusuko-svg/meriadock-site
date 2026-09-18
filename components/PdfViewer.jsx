@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-function PdfPage({ pdf, pageNumber, scale, active }) {
+function PdfPage({ pdf, pageNumber, scale, active, onVisible }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function PdfPage({ pdf, pageNumber, scale, active }) {
 
       await page.render({ canvasContext: context, viewport }).promise;
 
-      if (cancelled) return;
+      if (!cancelled) onVisible?.(pageNumber);
     }
 
     render();
@@ -27,7 +27,7 @@ function PdfPage({ pdf, pageNumber, scale, active }) {
     return () => {
       cancelled = true;
     };
-  }, [pdf, pageNumber, scale, active]);
+  }, [pdf, pageNumber, scale, active, onVisible]);
 
   return (
     <div className="pdf-viewer-page">
@@ -43,13 +43,19 @@ function PdfPage({ pdf, pageNumber, scale, active }) {
 export default function PdfViewer({ url, title }) {
   const [pdf, setPdf] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [scale, setScale] = useState(1.15);
   const [visiblePages, setVisiblePages] = useState(new Set());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const touchStart = useRef(null);
 
+  const storageKey = `meriadock-reader:${url}`;
+
   useEffect(() => {
+    const saved = Number(localStorage.getItem(storageKey));
+    if (saved) setCurrentPage(saved);
+
     const updateScale = () => {
       if (window.innerWidth < 768) {
         setScale(Math.min(window.innerWidth / 700, 1));
@@ -59,7 +65,7 @@ export default function PdfViewer({ url, title }) {
     updateScale();
     window.addEventListener("resize", updateScale);
     return () => window.removeEventListener("resize", updateScale);
-  }, []);
+  }, [storageKey]);
 
   useEffect(() => {
     let active = true;
@@ -123,6 +129,11 @@ export default function PdfViewer({ url, title }) {
     return () => observer.disconnect();
   }, [totalPages]);
 
+  function updateReadingPosition(page) {
+    setCurrentPage(page);
+    localStorage.setItem(storageKey, page);
+  }
+
   function handleTouchStart(event) {
     if (event.touches.length === 2) {
       touchStart.current = event.touches[0].clientX;
@@ -152,15 +163,10 @@ export default function PdfViewer({ url, title }) {
   }
 
   return (
-    <div
-      className="pdf-viewer"
-      aria-label={title}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-    >
+    <div className="pdf-viewer" aria-label={title} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
       <div className="pdf-viewer-toolbar">
+        <span>{currentPage} / {totalPages}</span>
         <button onClick={() => setScale((s) => Math.max(0.75, s - 0.1))}>−</button>
-        <span>{totalPages} páginas</span>
         <button onClick={() => setScale((s) => Math.min(2, s + 0.1))}>+</button>
       </div>
 
@@ -169,7 +175,7 @@ export default function PdfViewer({ url, title }) {
           const page = index + 1;
           return (
             <div key={page} data-page={page}>
-              <PdfPage pdf={pdf} pageNumber={page} scale={scale} active={visiblePages.has(page)} />
+              <PdfPage pdf={pdf} pageNumber={page} scale={scale} active={visiblePages.has(page)} onVisible={updateReadingPosition} />
             </div>
           );
         })}
