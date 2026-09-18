@@ -48,11 +48,11 @@ const nextConfig = {
       },
       {
         source: '/publicaciones',
-        destination: 'https://publicaciones-9vou.vercel.app/publicaciones',
+        destination: 'https://publicaciones-sepia.vercel.app/publicaciones',
       },
       {
         source: '/publicaciones/:path*',
-        destination: 'https://publicaciones-9vou.vercel.app/publicaciones/:path*',
+        destination: 'https://publicaciones-sepia.vercel.app/publicaciones/:path*',
       }
     ];
 
