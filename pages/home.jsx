@@ -1,42 +1,28 @@
-import { useState, useRef, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Link from "next/link";
 
+const publications = [
+  {
+    id: "afrodita-areia-volumen-I",
+    title: "Afrodita Areia",
+    subtitle: "Sobre la pasión",
+    volume: "Volumen I",
+    author: "Miguel Hilario Olvera Aguilar",
+    year: 2026,
+    description:
+      "Una ontología materialista de la determinación que piensa la pasión como fuerza anterior al sujeto consciente y recorre su desarrollo desde el caos hasta el ego.",
+    coverUrl: "/publicaciones/libros/afrodita-areia/portada.png",
+    readerUrl: "/publicaciones/libros/afrodita-areia/volumen-I",
+  },
+];
+
 export default function Home() {
-  const [publications, setPublications] = useState([]);
-  const [publicationsLoading, setPublicationsLoading] = useState(true);
-  const carouselRef = useRef(null);
-
-  useEffect(() => {
-    let active = true;
-
-    async function loadPublications() {
-      try {
-        const response = await fetch("/api/publicaciones");
-        if (!response.ok) throw new Error("No fue posible cargar las publicaciones");
-        const data = await response.json();
-        if (active) setPublications(Array.isArray(data) ? data : []);
-      } catch (error) {
-        console.error(error);
-        if (active) setPublications([]);
-      } finally {
-        if (active) setPublicationsLoading(false);
-      }
-    }
-
-    loadPublications();
-    return () => {
-      active = false;
-    };
-  }, []);
-
   return (
     <>
       <Header />
 
       <main className="home-main">
-        {/* 1. SLIDER PRINCIPAL */}
         <section className="slider-principal">
           <div className="slider-placeholder">
             [Slider principal - Academia, Gaceta, Tecnología, Colabora con nosotros]
@@ -45,62 +31,48 @@ export default function Home() {
 
         <div className="divider"></div>
 
-        {/* 2. PUBLICACIONES - CARRUSEL */}
         <section className="publications-section">
           <h2 className="section-title">Publicaciones</h2>
 
           <div className="carousel-container">
-            <div className="carousel-track" ref={carouselRef}>
-              {publicationsLoading ? (
-                <div className="publications-status">Cargando publicaciones…</div>
-              ) : publications.length ? (
-                publications.map((item) => (
-                  <Link
-                    key={item.id}
-                    href={item.readerUrl || item.pdfUrl}
-                    className="publication-card-link"
-                    aria-label={`Leer ${item.title}: ${item.subtitle}`}
-                  >
-                    <article className="publication-card">
-                      <div className="publication-cover-wrap">
-                        <img
-                          src={item.coverUrl}
-                          alt={`Portada de ${item.title}: ${item.subtitle}`}
-                          className="publication-cover"
-                          loading="lazy"
-                        />
-                      </div>
+            <div className="carousel-track">
+              {publications.map((item) => (
+                <Link
+                  key={item.id}
+                  href={item.readerUrl}
+                  className="publication-card-link"
+                  aria-label={`Leer ${item.title}: ${item.subtitle}`}
+                >
+                  <article className="publication-card">
+                    <div className="publication-cover-wrap">
+                      <img
+                        src={item.coverUrl}
+                        alt={`Portada de ${item.title}: ${item.subtitle}`}
+                        className="publication-cover"
+                        loading="lazy"
+                      />
+                    </div>
 
-                      <div className="publication-card-content">
-                        {item.volume ? (
-                          <span className="publication-volume">{item.volume}</span>
-                        ) : null}
-                        <h4>{item.title}</h4>
-                        <p className="publication-subtitle">{item.subtitle}</p>
-                        {item.description ? (
-                          <p className="publication-description">{item.description}</p>
-                        ) : null}
-                        <div className="publication-meta">
-                          <span>{item.author}</span>
-                          <span>{item.year}</span>
-                        </div>
-                        <span className="publication-action">Leer publicación →</span>
+                    <div className="publication-card-content">
+                      <span className="publication-volume">{item.volume}</span>
+                      <h4>{item.title}</h4>
+                      <p className="publication-subtitle">{item.subtitle}</p>
+                      <p className="publication-description">{item.description}</p>
+                      <div className="publication-meta">
+                        <span>{item.author}</span>
+                        <span>{item.year}</span>
                       </div>
-                    </article>
-                  </Link>
-                ))
-              ) : (
-                <div className="publications-status">
-                  No hay publicaciones disponibles en este momento.
-                </div>
-              )}
+                      <span className="publication-action">Leer publicación →</span>
+                    </div>
+                  </article>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
 
         <div className="divider"></div>
 
-        {/* 3. QUIÉNES SOMOS / QUÉ HACEMOS */}
         <section className="about-section">
           <div className="about-grid">
             <div className="about-column">
