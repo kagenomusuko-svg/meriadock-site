@@ -18,10 +18,7 @@ function PdfPage({ pdf, pageNumber, scale, active }) {
       canvas.width = viewport.width;
       canvas.height = viewport.height;
 
-      await page.render({
-        canvasContext: context,
-        viewport,
-      }).promise;
+      await page.render({ canvasContext: context, viewport }).promise;
 
       if (!cancelled) setRendered(true);
     }
@@ -38,13 +35,9 @@ function PdfPage({ pdf, pageNumber, scale, active }) {
       {active ? (
         <canvas ref={canvasRef} className="pdf-viewer-canvas" />
       ) : (
-        <div className="pdf-viewer-placeholder">
-          Página {pageNumber}
-        </div>
+        <div className="pdf-viewer-placeholder">Página {pageNumber}</div>
       )}
-      {rendered ? (
-        <span className="pdf-viewer-page-number">Página {pageNumber}</span>
-      ) : null}
+      {rendered ? <span className="pdf-viewer-page-number">Página {pageNumber}</span> : null}
     </div>
   );
 }
@@ -56,6 +49,19 @@ export default function PdfViewer({ url, title }) {
   const [visiblePages, setVisiblePages] = useState(new Set());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const updateScale = () => {
+      if (window.innerWidth < 768) {
+        setScale(Math.min(window.innerWidth / 700, 1));
+      }
+    };
+
+    updateScale();
+    window.addEventListener("resize", updateScale);
+
+    return () => window.removeEventListener("resize", updateScale);
+  }, []);
 
   useEffect(() => {
     let active = true;
@@ -75,12 +81,7 @@ export default function PdfViewer({ url, title }) {
 
         setPdf(document);
         setTotalPages(document.numPages);
-
-        const initialPages = new Set();
-        for (let i = 1; i <= Math.min(3, document.numPages); i++) {
-          initialPages.add(i);
-        }
-        setVisiblePages(initialPages);
+        setVisiblePages(new Set([1, 2, 3].filter((page) => page <= document.numPages)));
       } catch (err) {
         console.error("Error cargando PDF:", err);
         if (active) setError(true);
@@ -104,37 +105,39 @@ export default function PdfViewer({ url, title }) {
 
           entries.forEach((entry) => {
             const page = Number(entry.target.dataset.page);
+
             if (entry.isIntersecting) {
               next.add(page);
-              next.add(page - 1);
-              next.add(page + 1);
+              if (page > 1) next.add(page - 1);
+              if (page < totalPages) next.add(page + 1);
             }
           });
+
+          // Conserva una ventana móvil de lectura para evitar crecimiento infinito de memoria.
+          const activePages = [...next];
+          if (activePages.length > 9) {
+            const latest = Math.max(...activePages);
+            return new Set(activePages.filter((item) => item >= latest - 4 && item <= latest + 4));
+          }
 
           return next;
         });
       },
-      { rootMargin: "600px" }
+      { rootMargin: "700px" }
     );
 
-    document.querySelectorAll("[data-page]").forEach((element) => {
-      observer.observe(element);
-    });
+    document.querySelectorAll("[data-page]").forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
   }, [totalPages]);
 
-  if (loading) {
-    return <div className="publication-reader-loading">Cargando publicación…</div>;
-  }
+  if (loading) return <div className="publication-reader-loading">Cargando publicación…</div>;
 
   if (error) {
     return (
       <div className="publication-reader-fallback">
         <p>No fue posible cargar el lector institucional.</p>
-        <a href={url} target="_blank" rel="noopener noreferrer">
-          Abrir PDF
-        </a>
+        <a href={url} target="_blank" rel="noopener noreferrer">Abrir PDF</a>
       </div>
     );
   }
@@ -153,12 +156,7 @@ export default function PdfViewer({ url, title }) {
 
           return (
             <div key={page} data-page={page}>
-              <PdfPage
-                pdf={pdf}
-                pageNumber={page}
-                scale={scale}
-                active={visiblePages.has(page)}
-              />
+              <PdfPage pdf={pdf} pageNumber={page} scale={scale} active={visiblePages.has(page)} />
             </div>
           );
         })}
