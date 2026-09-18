@@ -26,6 +26,7 @@ export default async function handler(req, res) {
           ...item,
           coverUrl: rawUrl(item.cover),
           pdfUrl: rawUrl(item.pdf),
+          readerUrl: item.slug ? `/publicaciones/${item.slug}` : null,
         }))
       : [];
 
