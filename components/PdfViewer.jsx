@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 
-function PdfPage({ pdf, pageNumber, scale }) {
+function PdfPage({ pdf, pageNumber, scale, active }) {
   const canvasRef = useRef(null);
+  const [rendered, setRendered] = useState(false);
 
   useEffect(() => {
-    let active = true;
+    let cancelled = false;
 
     async function render() {
-      if (!pdf || !canvasRef.current) return;
+      if (!active || !pdf || !canvasRef.current) return;
 
       const page = await pdf.getPage(pageNumber);
       const viewport = page.getViewport({ scale });
@@ -22,20 +23,28 @@ function PdfPage({ pdf, pageNumber, scale }) {
         viewport,
       }).promise;
 
-      if (!active) return;
+      if (!cancelled) setRendered(true);
     }
 
     render();
 
     return () => {
-      active = false;
+      cancelled = true;
     };
-  }, [pdf, pageNumber, scale]);
+  }, [pdf, pageNumber, scale, active]);
 
   return (
     <div className="pdf-viewer-page">
-      <canvas ref={canvasRef} className="pdf-viewer-canvas" />
-      <span className="pdf-viewer-page-number">Página {pageNumber}</span>
+      {active ? (
+        <canvas ref={canvasRef} className="pdf-viewer-canvas" />
+      ) : (
+        <div className="pdf-viewer-placeholder">
+          Página {pageNumber}
+        </div>
+      )}
+      {rendered ? (
+        <span className="pdf-viewer-page-number">Página {pageNumber}</span>
+      ) : null}
     </div>
   );
 }
@@ -44,6 +53,7 @@ export default function PdfViewer({ url, title }) {
   const [pdf, setPdf] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
   const [scale, setScale] = useState(1.15);
+  const [visiblePages, setVisiblePages] = useState(new Set());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -65,6 +75,12 @@ export default function PdfViewer({ url, title }) {
 
         setPdf(document);
         setTotalPages(document.numPages);
+
+        const initialPages = new Set();
+        for (let i = 1; i <= Math.min(3, document.numPages); i++) {
+          initialPages.add(i);
+        }
+        setVisiblePages(initialPages);
       } catch (err) {
         console.error("Error cargando PDF:", err);
         if (active) setError(true);
@@ -79,6 +95,34 @@ export default function PdfViewer({ url, title }) {
       active = false;
     };
   }, [url]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setVisiblePages((current) => {
+          const next = new Set(current);
+
+          entries.forEach((entry) => {
+            const page = Number(entry.target.dataset.page);
+            if (entry.isIntersecting) {
+              next.add(page);
+              next.add(page - 1);
+              next.add(page + 1);
+            }
+          });
+
+          return next;
+        });
+      },
+      { rootMargin: "600px" }
+    );
+
+    document.querySelectorAll("[data-page]").forEach((element) => {
+      observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [totalPages]);
 
   if (loading) {
     return <div className="publication-reader-loading">Cargando publicación…</div>;
@@ -104,14 +148,20 @@ export default function PdfViewer({ url, title }) {
       </div>
 
       <div className="pdf-viewer-document">
-        {Array.from({ length: totalPages }, (_, index) => (
-          <PdfPage
-            key={index + 1}
-            pdf={pdf}
-            pageNumber={index + 1}
-            scale={scale}
-          />
-        ))}
+        {Array.from({ length: totalPages }, (_, index) => {
+          const page = index + 1;
+
+          return (
+            <div key={page} data-page={page}>
+              <PdfPage
+                pdf={pdf}
+                pageNumber={page}
+                scale={scale}
+                active={visiblePages.has(page)}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
