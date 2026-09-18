@@ -15,8 +15,11 @@ export default function PdfViewer({ url, title }) {
     async function loadPdf() {
       try {
         const pdfjs = await import("pdfjs-dist/build/pdf");
-        const worker = await import("pdfjs-dist/build/pdf.worker.min.mjs");
-        pdfjs.GlobalWorkerOptions.workerSrc = worker.default;
+
+        pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+          "pdfjs-dist/build/pdf.worker.min.mjs",
+          import.meta.url
+        ).toString();
 
         const document = await pdfjs.getDocument(url).promise;
 
