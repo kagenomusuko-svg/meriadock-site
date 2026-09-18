@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 
 function PdfPage({ pdf, pageNumber, scale, active }) {
   const canvasRef = useRef(null);
-  const [rendered, setRendered] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -20,7 +19,7 @@ function PdfPage({ pdf, pageNumber, scale, active }) {
 
       await page.render({ canvasContext: context, viewport }).promise;
 
-      if (!cancelled) setRendered(true);
+      if (cancelled) return;
     }
 
     render();
@@ -37,7 +36,6 @@ function PdfPage({ pdf, pageNumber, scale, active }) {
       ) : (
         <div className="pdf-viewer-placeholder">Página {pageNumber}</div>
       )}
-      {rendered ? <span className="pdf-viewer-page-number">Página {pageNumber}</span> : null}
     </div>
   );
 }
@@ -49,6 +47,7 @@ export default function PdfViewer({ url, title }) {
   const [visiblePages, setVisiblePages] = useState(new Set());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const touchStart = useRef(null);
 
   useEffect(() => {
     const updateScale = () => {
@@ -59,7 +58,6 @@ export default function PdfViewer({ url, title }) {
 
     updateScale();
     window.addEventListener("resize", updateScale);
-
     return () => window.removeEventListener("resize", updateScale);
   }, []);
 
@@ -69,19 +67,17 @@ export default function PdfViewer({ url, title }) {
     async function loadPdf() {
       try {
         const pdfjs = await import("pdfjs-dist/build/pdf");
-
         pdfjs.GlobalWorkerOptions.workerSrc = new URL(
           "pdfjs-dist/build/pdf.worker.min.mjs",
           import.meta.url
         ).toString();
 
         const document = await pdfjs.getDocument(url).promise;
-
         if (!active) return;
 
         setPdf(document);
         setTotalPages(document.numPages);
-        setVisiblePages(new Set([1, 2, 3].filter((page) => page <= document.numPages)));
+        setVisiblePages(new Set([1, 2, 3].filter((p) => p <= document.numPages)));
       } catch (err) {
         console.error("Error cargando PDF:", err);
         if (active) setError(true);
@@ -91,7 +87,6 @@ export default function PdfViewer({ url, title }) {
     }
 
     loadPdf();
-
     return () => {
       active = false;
     };
@@ -105,7 +100,6 @@ export default function PdfViewer({ url, title }) {
 
           entries.forEach((entry) => {
             const page = Number(entry.target.dataset.page);
-
             if (entry.isIntersecting) {
               next.add(page);
               if (page > 1) next.add(page - 1);
@@ -113,11 +107,10 @@ export default function PdfViewer({ url, title }) {
             }
           });
 
-          // Conserva una ventana móvil de lectura para evitar crecimiento infinito de memoria.
-          const activePages = [...next];
-          if (activePages.length > 9) {
-            const latest = Math.max(...activePages);
-            return new Set(activePages.filter((item) => item >= latest - 4 && item <= latest + 4));
+          const pages = [...next];
+          if (pages.length > 9) {
+            const latest = Math.max(...pages);
+            return new Set(pages.filter((p) => p >= latest - 4 && p <= latest + 4));
           }
 
           return next;
@@ -127,9 +120,25 @@ export default function PdfViewer({ url, title }) {
     );
 
     document.querySelectorAll("[data-page]").forEach((element) => observer.observe(element));
-
     return () => observer.disconnect();
   }, [totalPages]);
+
+  function handleTouchStart(event) {
+    if (event.touches.length === 2) {
+      touchStart.current = event.touches[0].clientX;
+    }
+  }
+
+  function handleTouchEnd(event) {
+    if (touchStart.current === null) return;
+    const distance = event.changedTouches[0].clientX - touchStart.current;
+
+    if (Math.abs(distance) > 50) {
+      setScale((current) => Math.max(0.75, Math.min(2, current + (distance > 0 ? 0.1 : -0.1))));
+    }
+
+    touchStart.current = null;
+  }
 
   if (loading) return <div className="publication-reader-loading">Cargando publicación…</div>;
 
@@ -143,17 +152,21 @@ export default function PdfViewer({ url, title }) {
   }
 
   return (
-    <div className="pdf-viewer" aria-label={title}>
+    <div
+      className="pdf-viewer"
+      aria-label={title}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="pdf-viewer-toolbar">
         <button onClick={() => setScale((s) => Math.max(0.75, s - 0.1))}>−</button>
         <span>{totalPages} páginas</span>
-        <button onClick={() => setScale((s) => s + 0.1)}>+</button>
+        <button onClick={() => setScale((s) => Math.min(2, s + 0.1))}>+</button>
       </div>
 
       <div className="pdf-viewer-document">
         {Array.from({ length: totalPages }, (_, index) => {
           const page = index + 1;
-
           return (
             <div key={page} data-page={page}>
               <PdfPage pdf={pdf} pageNumber={page} scale={scale} active={visiblePages.has(page)} />
