@@ -118,7 +118,8 @@ export default function PublicationReader({ publication }) {
           <span>{publication.volume || publication.title}</span>
         </nav>
 
-        <header className="publication-reader-header">
+        <div className="publication-reader-layout">
+          <header className="publication-reader-header">
           <div className="publication-reader-cover-wrap">
             <img
               src={publication.coverUrl}
@@ -153,9 +154,9 @@ export default function PublicationReader({ publication }) {
               Abrir PDF directamente ↗
             </a>
           </div>
-        </header>
+          </header>
 
-        <section className="publication-reader-viewer" aria-label="Lector PDF">
+          <section className="publication-reader-viewer" aria-label="Lector PDF">
           {!viewerUrl && !viewerError ? (
             <div className="publication-reader-loading">
               Cargando publicación…
@@ -184,7 +185,8 @@ export default function PublicationReader({ publication }) {
               className="publication-reader-frame"
             />
           ) : null}
-        </section>
+          </section>
+        </div>
       </main>
 
       <Footer />
