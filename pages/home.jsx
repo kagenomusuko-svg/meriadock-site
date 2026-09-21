@@ -105,7 +105,7 @@ export default function Home() {
               <ul className="axes-list">
                 <li className="axes-item">
                   <strong>
-                    <Link href="/programas/eco">Desarrollo social y comunitario</Link>
+                    <Link href="/ejes/desarrollo-social-comunitario">Desarrollo social y comunitario</Link>
                   </strong>
                   <p>
                     Diseñamos y realizamos programas, talleres, acciones de acompañamiento y proyectos
@@ -115,7 +115,7 @@ export default function Home() {
                 </li>
                 <li className="axes-item">
                   <strong>
-                    <Link href="/programas/rio">Investigación y desarrollo</Link>
+                    <Link href="/ejes/investigacion-desarrollo">Investigación y desarrollo</Link>
                   </strong>
                   <p>
                     Generamos y examinamos conocimiento, métodos, instrumentos y herramientas que
@@ -124,7 +124,7 @@ export default function Home() {
                 </li>
                 <li className="axes-item">
                   <strong>
-                    <Link href="/programas/manos">Educación y formación</Link>
+                    <Link href="/ejes/educacion-formacion">Educación y formación</Link>
                   </strong>
                   <p>
                     Creamos espacios que permiten explorar campos de conocimiento y prácticas de manera
