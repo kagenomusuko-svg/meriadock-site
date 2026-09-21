@@ -13,9 +13,9 @@ export default function AxisPage({ title, description, programs }) {
 
       <Header />
 
-      <main className="bg-white">
-        <section className="bg-gradient-to-b from-[#1E4C45] to-gray-50 py-20 text-white sm:py-32">
-          <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+      <main className="bg-white" style={{ paddingTop: 0 }}>
+        <section className="flex min-h-[430px] items-center bg-gradient-to-b from-[#1E4C45] to-gray-50 text-white sm:min-h-[520px]">
+          <div className="mx-auto w-full max-w-7xl px-4 text-center sm:px-6 lg:px-8">
             <h1 className="text-5xl font-bold sm:text-6xl">
               {title}
             </h1>
