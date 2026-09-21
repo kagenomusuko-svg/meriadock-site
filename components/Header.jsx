@@ -180,14 +180,29 @@ export default function Header() {
                     className="absolute top-full left-0 mt-2 border shadow-sm p-2 rounded z-50 min-w-[270px]"
                     style={dropdownStyle}
                   >
-                    <li className="px-3 py-1 text-white">
-                      Desarrollo social y comunitario
+                    <li>
+                      <Link
+                        href="/ejes/desarrollo-social-comunitario"
+                        className="block px-3 py-1 text-white"
+                      >
+                        Desarrollo social y comunitario
+                      </Link>
                     </li>
-                    <li className="px-3 py-1 text-white">
-                      Investigación y desarrollo
+                    <li>
+                      <Link
+                        href="/ejes/investigacion-desarrollo"
+                        className="block px-3 py-1 text-white"
+                      >
+                        Investigación y desarrollo
+                      </Link>
                     </li>
-                    <li className="px-3 py-1 text-white">
-                      Educación y formación
+                    <li>
+                      <Link
+                        href="/ejes/educacion-formacion"
+                        className="block px-3 py-1 text-white"
+                      >
+                        Educación y formación
+                      </Link>
                     </li>
                   </ul>
                 )}
@@ -328,14 +343,32 @@ function MobileMenu() {
                     Ejes
                   </summary>
                   <ul className="border-t border-[#E5E7EB] bg-[#FAFBFB] py-1">
-                    <li className="flex min-h-[44px] items-center px-9 text-[#374151]">
-                      Desarrollo social y comunitario
+                    <li>
+                      <Link
+                        href="/ejes/desarrollo-social-comunitario"
+                        className="flex min-h-[44px] items-center px-9 text-[#374151] transition-colors hover:text-[#1E4C45] focus-visible:text-[#1E4C45] focus-visible:outline-none"
+                        onClick={() => setOpen(false)}
+                      >
+                        Desarrollo social y comunitario
+                      </Link>
                     </li>
-                    <li className="flex min-h-[44px] items-center px-9 text-[#374151]">
-                      Investigación y desarrollo
+                    <li>
+                      <Link
+                        href="/ejes/investigacion-desarrollo"
+                        className="flex min-h-[44px] items-center px-9 text-[#374151] transition-colors hover:text-[#1E4C45] focus-visible:text-[#1E4C45] focus-visible:outline-none"
+                        onClick={() => setOpen(false)}
+                      >
+                        Investigación y desarrollo
+                      </Link>
                     </li>
-                    <li className="flex min-h-[44px] items-center px-9 text-[#374151]">
-                      Educación y formación
+                    <li>
+                      <Link
+                        href="/ejes/educacion-formacion"
+                        className="flex min-h-[44px] items-center px-9 text-[#374151] transition-colors hover:text-[#1E4C45] focus-visible:text-[#1E4C45] focus-visible:outline-none"
+                        onClick={() => setOpen(false)}
+                      >
+                        Educación y formación
+                      </Link>
                     </li>
                   </ul>
                 </details>
