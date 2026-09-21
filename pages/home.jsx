@@ -108,9 +108,9 @@ export default function Home() {
                     <Link href="/ejes/desarrollo-social-comunitario">Desarrollo social y comunitario</Link>
                   </strong>
                   <p>
-                    Diseñamos y realizamos programas, talleres, acciones de acompañamiento y proyectos
-                    orientados a generar o ampliar condiciones materiales de posibilidad para personas
-                    y comunidades.
+                    Desarrollamos programas de trabajo directo con comunidades y grupos específicos,
+                    desde talleres socioemocionales en secundarias hasta formación práctica en oficios
+                    y habilidades técnicas.
                   </p>
                 </li>
                 <li className="axes-item">
@@ -118,8 +118,9 @@ export default function Home() {
                     <Link href="/ejes/investigacion-desarrollo">Investigación y desarrollo</Link>
                   </strong>
                   <p>
-                    Generamos y examinamos conocimiento, métodos, instrumentos y herramientas que
-                    puedan ampliar nuestra capacidad para comprender y abordar distintos problemas.
+                    Producimos, examinamos y difundimos conocimiento mediante proyectos editoriales y
+                    otras iniciativas que permiten someter ideas, problemas y modelos a revisión
+                    rigurosa.
                   </p>
                 </li>
                 <li className="axes-item">
@@ -127,9 +128,9 @@ export default function Home() {
                     <Link href="/ejes/educacion-formacion">Educación y formación</Link>
                   </strong>
                   <p>
-                    Creamos espacios que permiten explorar campos de conocimiento y prácticas de manera
-                    estructurada, tanto mediante propuestas propias como a través de futuras alianzas y
-                    programas académicos.
+                    Organizamos trayectos formativos estructurados mediante Academia Meriadock, con
+                    contenidos, actividades, evaluación y acreditación, además de futuras propuestas y
+                    colaboraciones académicas.
                   </p>
                 </li>
               </ul>
