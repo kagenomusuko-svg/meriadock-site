@@ -4,14 +4,16 @@ const programs = [
   {
     title: "Academia Meriadock",
     subtitle: "Plataforma permanente de formación",
-    description:
-      "Programa permanente de educación y formación mediante el cual Meriadock organiza trayectos académicos estructurados, recursos de estudio, actividades, evaluaciones y acreditación. Su oferta se desarrolla en una plataforma propia y puede ampliarse conforme se incorporen nuevos programas.",
+    paragraphs: [
+      "Academia Meriadock es el programa permanente mediante el cual la Asociación organiza su oferta de educación y formación en línea. La plataforma reúne contenidos académicos, sesiones, recursos de estudio, actividades, evaluaciones, seguimiento de progreso y mecanismos de acreditación.",
+      "Los programas se estructuran como recorridos formativos completos y pueden ampliarse conforme se desarrollen nuevas propuestas académicas. La Academia funciona como un sistema propio dentro del ecosistema digital de Meriadock, por lo que cada estudiante puede acceder desde allí a los diplomados disponibles y a su progreso individual.",
+    ],
     itemsLabel: "Diplomados disponibles",
     items: [
       {
         title: "Diplomado en autodeterminación causal",
         description:
-          "Trayecto formativo dedicado al estudio de la autodeterminación causal y de las herramientas conceptuales con las que pueden examinarse la determinación, la voluntad, la responsabilidad y la atribución causal.",
+          "Programa dedicado al estudio de la autodeterminación causal y de las herramientas conceptuales utilizadas para examinar determinación, voluntad, responsabilidad y atribución causal.",
       },
       {
         title: "Diplomado en disociación del ego",
@@ -33,7 +35,7 @@ export default function EducacionFormacion() {
   return (
     <AxisPage
       title="Educación y formación"
-      description="Este eje reúne programas estructurados de aprendizaje y educación continua. Su propósito es ofrecer recorridos formativos organizados, con contenidos, actividades y criterios de acreditación definidos, mediante propuestas desarrolladas por Meriadock y futuras colaboraciones académicas."
+      description="Este eje reúne los programas mediante los cuales Meriadock organiza procesos estructurados de aprendizaje, educación continua y desarrollo académico, con contenidos, actividades y criterios de acreditación definidos."
       programs={programs}
     />
   );
