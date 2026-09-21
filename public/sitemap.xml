@@ -15,7 +15,12 @@
   <url><loc>https://www.meriadock.org.mx/nosotros/historia</loc></url>
   <url><loc>https://www.meriadock.org.mx/nosotros/marco-institucional</loc></url>
 
-  <!-- Ejes y publicaciones institucionales -->
+  <!-- Ejes institucionales -->
+  <url><loc>https://www.meriadock.org.mx/ejes/desarrollo-social-comunitario</loc></url>
+  <url><loc>https://www.meriadock.org.mx/ejes/investigacion-desarrollo</loc></url>
+  <url><loc>https://www.meriadock.org.mx/ejes/educacion-formacion</loc></url>
+
+  <!-- Programas y publicaciones institucionales -->
   <url><loc>https://www.meriadock.org.mx/programas/eco</loc></url>
   <url><loc>https://www.meriadock.org.mx/programas/manos</loc></url>
   <url><loc>https://www.meriadock.org.mx/programas/rio</loc></url>
