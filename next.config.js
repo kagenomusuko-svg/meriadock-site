@@ -27,6 +27,14 @@ const nextConfig = {
         destination: 'https://meriadock-academy-six.vercel.app/academia',
       },
       {
+        source: '/revisor',
+        destination: 'https://dialogos-eleatas.vercel.app/dialogos-eleatas/revisor',
+      },
+      {
+        source: '/revisor/:path*',
+        destination: 'https://dialogos-eleatas.vercel.app/dialogos-eleatas/revisor/:path*',
+      },
+      {
         source: '/academia/:path*',
         destination: 'https://meriadock-academy-six.vercel.app/academia/:path*',
       },
