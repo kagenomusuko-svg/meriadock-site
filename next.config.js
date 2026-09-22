@@ -31,6 +31,14 @@ const nextConfig = {
         destination: 'https://meriadock-academy-six.vercel.app/academia/:path*',
       },
       {
+        source: '/revisor',
+        destination: 'https://dialogos-eleatas-hilario-olveras-projects.vercel.app/revisor',
+      },
+      {
+        source: '/revisor/:path*',
+        destination: 'https://dialogos-eleatas-hilario-olveras-projects.vercel.app/revisor/:path*',
+      },
+      {
         source: '/dialogos-eleatas',
         destination: 'https://dialogos-eleatas.vercel.app/dialogos-eleatas',
       },
