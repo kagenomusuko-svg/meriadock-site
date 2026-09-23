@@ -41,6 +41,19 @@ const publications = [
     coverUrl: "/publicaciones/libros/afrodita-areia/portada-volumen-III.png",
     readerUrl: "/publicaciones/libros/afrodita-areia/volumen-III",
   },
+  {
+    id: "afrodita-areia-volumen-IV",
+    title: "Afrodita Areia",
+    subtitle: "Areópago",
+    volume: "Volumen IV",
+    author: "Miguel Hilario Olvera Aguilar",
+    year: 2026,
+    doi: "10.5281/zenodo.19601192",
+    description:
+      "Una ontología de la soberanía, la ley y el conflicto: el Areópago como espacio donde la voluntad individual se enfrenta con sus formas colectivas.",
+    coverUrl: "/publicaciones/libros/afrodita-areia/portada-volumen-IV.png",
+    readerUrl: "/publicaciones/libros/afrodita-areia/volumen-IV",
+  },
 ];
 
 export default function Home() {
