@@ -246,7 +246,7 @@ export default function Header() {
                   >
                     <li>
                       <Link
-                        href="/tecnologia/aqorath"
+                        href="/tecnologias/aqorath"
                         className="block px-3 py-1 text-white"
                       >
                         Aqorath
@@ -392,7 +392,7 @@ function MobileMenu() {
                   <ul className="border-t border-[#E5E7EB] bg-[#FAFBFB] py-1">
                     <li>
                       <Link
-                        href="/tecnologia/aqorath"
+                        href="/tecnologias/aqorath"
                         className="flex min-h-[44px] items-center px-9 text-[#374151] transition-colors hover:text-[#1E4C45] focus-visible:text-[#1E4C45] focus-visible:outline-none"
                         onClick={() => setOpen(false)}
                       >

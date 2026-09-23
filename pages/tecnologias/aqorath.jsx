@@ -104,10 +104,10 @@ export default function AqorathTechnologyFallback() {
       }}
     >
       <Head>
-        <title>Aqorath | Tecnología Meriadock</title>
+        <title>Aqorath | Tecnologías Meriadock</title>
         <meta
           name="description"
-          content="Aqorath, desarrollo tecnológico de Centro Multidisciplinario Meriadock Formación y Asesoría A.C."
+          content="Aqorath — sistema contable inteligente de Centro Multidisciplinario Meriadock Formación y Asesoría A.C. Contabilidad profesional, explicable y gratuita para emprendedores, micronegocios y asociaciones civiles en México."
         />
       </Head>
       <AqorathHeader />
@@ -134,7 +134,7 @@ export default function AqorathTechnologyFallback() {
               textTransform: "uppercase",
             }}
           >
-            Tecnología Meriadock
+            Tecnologías Meriadock
           </p>
           <h1
             id="aqorath-title"
@@ -147,6 +147,27 @@ export default function AqorathTechnologyFallback() {
           >
             Aqorath
           </h1>
+          <p
+            style={{
+              margin: "24px auto 0",
+              maxWidth: 520,
+              color: "#3D6B63",
+              fontSize: 18,
+              lineHeight: 1.6,
+            }}
+          >
+            Contabilidad profesional, explicable y gratuita para emprendedores, micronegocios y asociaciones civiles en México.
+          </p>
+          <p
+            style={{
+              margin: "32px 0 0",
+              color: "#6B8F88",
+              fontSize: 14,
+              fontStyle: "italic",
+            }}
+          >
+            Próximamente
+          </p>
         </section>
       </main>
       <AqorathFooter />
