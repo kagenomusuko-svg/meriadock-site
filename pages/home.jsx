@@ -28,6 +28,19 @@ const publications = [
     coverUrl: "/publicaciones/libros/afrodita-areia/portada-volumen-II.png",
     readerUrl: "/publicaciones/libros/afrodita-areia/volumen-II",
   },
+  {
+    id: "afrodita-areia-volumen-III",
+    title: "Afrodita Areia",
+    subtitle: "Damasén",
+    volume: "Volumen III",
+    author: "Miguel Hilario Olvera Aguilar",
+    year: 2026,
+    doi: "10.5281/zenodo.19596275",
+    description:
+      "Una ontología del límite de la autodeterminación causal: Damasén y Peribea como figuras del Aego, del vínculo colapsado y de su escala colectiva.",
+    coverUrl: "/publicaciones/libros/afrodita-areia/portada-volumen-III.png",
+    readerUrl: "/publicaciones/libros/afrodita-areia/volumen-III",
+  },
 ];
 
 export default function Home() {
