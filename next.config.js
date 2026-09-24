@@ -67,12 +67,12 @@ const nextConfig = {
     if (aqorathTechnologyOrigin) {
       routes.unshift(
         {
-          source: '/tecnologias/aqorath',
-          destination: `${aqorathTechnologyOrigin}/tecnologias/aqorath`,
+          source: '/tecnologia/aqorath',
+          destination: `${aqorathTechnologyOrigin}/tecnologia/aqorath`,
         },
         {
-          source: '/tecnologias/aqorath/:path*',
-          destination: `${aqorathTechnologyOrigin}/tecnologias/aqorath/:path*`,
+          source: '/tecnologia/aqorath/:path*',
+          destination: `${aqorathTechnologyOrigin}/tecnologia/aqorath/:path*`,
         }
       );
     }
