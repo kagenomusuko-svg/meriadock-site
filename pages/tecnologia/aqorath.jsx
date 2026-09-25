@@ -7,7 +7,17 @@ function AqorathHeader() {
   return (
     <header
       className="site-header fixed top-0 left-0 right-0 z-40"
-      style={{ minHeight: 72, height: 72, flexShrink: 0 }}
+      style={{
+        minHeight: 72,
+        height: 72,
+        flexShrink: 0,
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 40,
+        backgroundColor: "#1E4C45",
+      }}
     >
       <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-6">
         <Link
@@ -118,6 +128,7 @@ export default function AqorathTechnologyFallback() {
           name="description"
           content="Aqorath, desarrollo tecnológico de Centro Multidisciplinario Meriadock Formación y Asesoría A.C."
         />
+        <meta name="theme-color" content="#1E4C45" />
       </Head>
       <AqorathHeader />
       <div aria-hidden="true" style={{ height: 72 }} />
