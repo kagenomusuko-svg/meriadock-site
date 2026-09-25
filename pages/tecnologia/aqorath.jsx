@@ -5,8 +5,11 @@ const SITE_URL = "https://www.meriadock.org.mx";
 
 function AqorathHeader() {
   return (
-    <header className="site-header">
-      <div className="container mx-auto flex min-h-[80px] items-center px-4 py-3">
+    <header
+      className="site-header"
+      style={{ minHeight: 80, height: 80, flexShrink: 0 }}
+    >
+      <div className="mx-auto flex h-[80px] max-w-[1100px] items-center px-4">
         <Link
           href="/home"
           className="flex items-center gap-3"
