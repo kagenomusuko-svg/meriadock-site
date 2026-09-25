@@ -7,9 +7,9 @@ function AqorathHeader() {
   return (
     <header
       className="site-header"
-      style={{ minHeight: 80, height: 80, flexShrink: 0 }}
+      style={{ minHeight: 72, height: 72, flexShrink: 0 }}
     >
-      <div className="mx-auto flex h-[80px] max-w-[1100px] items-center px-4">
+      <div className="mx-auto flex h-[72px] max-w-[1100px] items-center px-4">
         <Link
           href="/home"
           className="flex items-center gap-3"
