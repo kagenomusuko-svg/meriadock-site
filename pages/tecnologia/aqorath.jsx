@@ -114,7 +114,7 @@ export default function AqorathTechnologyFallback() {
         />
       </Head>
       <AqorathHeader />
-      <main style={{ flex: "1 0 auto", display: "flex" }}>
+      <main style={{ flex: "1 0 auto", display: "flex", paddingTop: 0 }}>
         <section
           style={{
             flex: 1,
