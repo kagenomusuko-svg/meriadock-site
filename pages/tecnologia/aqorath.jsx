@@ -118,13 +118,13 @@ export default function AqorathTechnologyFallback() {
         <section
           style={{
             flex: 1,
-            minHeight: "52vh",
+            minHeight: "auto",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             textAlign: "center",
-            padding: "48px 24px",
+            padding: "32px 24px 48px",
           }}
           aria-labelledby="aqorath-title"
         >
