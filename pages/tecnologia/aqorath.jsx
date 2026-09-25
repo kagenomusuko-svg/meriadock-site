@@ -9,10 +9,10 @@ function AqorathHeader() {
       className="site-header"
       style={{ minHeight: 72, height: 72, flexShrink: 0 }}
     >
-      <div className="mx-auto flex h-[72px] max-w-[1100px] items-center px-4">
+      <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-6">
         <Link
           href="/home"
-          className="flex items-center gap-3"
+          className="flex items-center gap-3 shrink-0"
           aria-label="Ir al inicio de Meriadock"
         >
           <img
@@ -20,14 +20,20 @@ function AqorathHeader() {
             alt="Sello del Centro Multidisciplinario Meriadock"
             className="h-12 w-12 rounded-full object-contain"
           />
-          <span className="grid leading-tight">
-            <strong className="text-sm font-semibold text-[var(--meriadock-silver)]">
+          <div>
+            <div
+              className="text-sm font-semibold"
+              style={{ color: "var(--meriadock-silver)" }}
+            >
               Centro Multidisciplinario Meriadock
-            </strong>
-            <small className="mt-1 text-xs text-[var(--meriadock-silver)]">
+            </div>
+            <div
+              className="text-xs"
+              style={{ color: "var(--meriadock-silver)" }}
+            >
               Formación y Asesoría A.C.
-            </small>
-          </span>
+            </div>
+          </div>
         </Link>
       </div>
       <div
