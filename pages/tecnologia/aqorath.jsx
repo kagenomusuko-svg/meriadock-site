@@ -6,7 +6,7 @@ const SITE_URL = "https://www.meriadock.org.mx";
 function AqorathHeader() {
   return (
     <header
-      className="site-header"
+      className="site-header fixed top-0 left-0 right-0 z-40"
       style={{ minHeight: 72, height: 72, flexShrink: 0 }}
     >
       <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-6">
@@ -120,6 +120,7 @@ export default function AqorathTechnologyFallback() {
         />
       </Head>
       <AqorathHeader />
+      <div aria-hidden="true" style={{ height: 72 }} />
       <main style={{ flex: "1 0 auto", display: "flex", paddingTop: 0 }}>
         <section
           style={{
