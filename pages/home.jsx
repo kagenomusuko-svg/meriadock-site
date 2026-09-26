@@ -138,7 +138,11 @@ export default function Home() {
                       <img
                         src={item.coverUrl}
                         alt={`Portada de ${item.title}: ${item.subtitle}`}
-                        className={`publication-cover${item.id === "reivindicacion-ontologica-del-ego-telar-de-las-moiras" ? " publication-cover-telar" : ""`}
+                        className={`publication-cover${
+                          item.id === "reivindicacion-ontologica-del-ego-telar-de-las-moiras"
+                            ? " publication-cover-telar"
+                            : ""
+                        }`}
                         loading="lazy"
                       />
                     </div>
