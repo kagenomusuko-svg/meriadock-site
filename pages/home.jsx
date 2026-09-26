@@ -68,6 +68,19 @@ const publications = [
     readerUrl: "/publicaciones/libros/afrodita-areia/volumen-IV",
   },
   {
+    id: "reivindicacion-ontologica-del-ego-telar-de-las-moiras",
+    title: "El telar de las Moiras",
+    subtitle: "Ontología de la autodeterminación causal",
+    volume: "Libro independiente",
+    author: "Miguel Hilario Olvera Aguilar",
+    year: 2026,
+    doi: "10.5281/zenodo.19601876",
+    description:
+      "Una exploración ontológica de la autodeterminación causal, el ego, la libertad y la responsabilidad.",
+    coverUrl: "/publicaciones/libros/telar-de-las-moiras/portada.png",
+    readerUrl: "/publicaciones/libros/telar-de-las-moiras/telar-de-las-moiras",
+  },
+  {
     id: "afrodita-areia-volumen-V",
     title: "Afrodita Areia",
     subtitle: "Caelus",
