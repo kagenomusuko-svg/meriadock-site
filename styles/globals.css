@@ -264,7 +264,7 @@ h1, h2, h3, [id] {
 }
 
 .publication-cover-telar {
-  object-fit: contain;
+  object-fit: fill;
 }
 
 .publication-card-content {
