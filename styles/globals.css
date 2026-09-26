@@ -263,6 +263,10 @@ h1, h2, h3, [id] {
   display: block;
 }
 
+.publication-cover-telar {
+  object-fit: contain;
+}
+
 .publication-card-content {
   padding: 16px;
 }
