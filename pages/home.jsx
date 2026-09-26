@@ -4,6 +4,19 @@ import Link from "next/link";
 
 const publications = [
   {
+    id: "reivindicacion-ontologica-del-ego-caos",
+    title: "Caos",
+    subtitle: "El abismo del ego y la doble mediación",
+    volume: "Libro independiente",
+    author: "Miguel Hilario Olvera Aguilar",
+    year: 2026,
+    doi: "10.5281/zenodo.19601474",
+    description:
+      "Una ontología del ego como acontecimiento de determinación: el colapso de la posibilidad, la doble mediación y la responsabilidad.",
+    coverUrl: "/publicaciones/libros/caos/portada.png",
+    readerUrl: "/publicaciones/libros/caos/caos",
+  },
+  {
     id: "afrodita-areia-volumen-I",
     title: "Afrodita Areia",
     subtitle: "Sobre la pasión",
