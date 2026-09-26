@@ -7,7 +7,7 @@ const publications = [
     id: "reivindicacion-ontologica-del-ego-caos",
     title: "Caos",
     subtitle: "El abismo del ego y la doble mediación",
-    volume: "Libro independiente",
+    volume: "Tratado ontológico",
     author: "Miguel Hilario Olvera Aguilar",
     year: 2026,
     doi: "10.5281/zenodo.19601474",
@@ -96,7 +96,7 @@ const publications = [
     id: "reivindicacion-ontologica-del-ego-telar-de-las-moiras",
     title: "El telar de las Moiras",
     subtitle: "Ontología de la autodeterminación causal",
-    volume: "Libro independiente",
+    volume: "Tratado ontológico",
     author: "Miguel Hilario Olvera Aguilar",
     year: 2026,
     doi: "10.5281/zenodo.19601876",
@@ -138,11 +138,7 @@ export default function Home() {
                       <img
                         src={item.coverUrl}
                         alt={`Portada de ${item.title}: ${item.subtitle}`}
-                        className={`publication-cover${
-                          item.id === "reivindicacion-ontologica-del-ego-telar-de-las-moiras"
-                            ? " publication-cover-telar"
-                            : ""
-                        }`}
+                        className={`publication-cover${item.id === "reivindicacion-ontologica-del-ego-telar-de-las-moiras" ? " publication-cover-telar" : ""`}
                         loading="lazy"
                       />
                     </div>
