@@ -109,7 +109,7 @@ const publications = [
     id: "reivindicacion-ontologica-del-ego-dilema-de-aquiles",
     title: "El dilema de Aquiles",
     subtitle: "O la disociación del ego",
-    volume: "Libro independiente",
+    volume: "Tratado ontológico",
     author: "Miguel Hilario Olvera Aguilar",
     year: 2026,
     doi: "10.5281/zenodo.19601694",
