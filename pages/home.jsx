@@ -63,7 +63,7 @@ const publications = [
     year: 2026,
     doi: "10.5281/zenodo.19601192",
     description:
-      "Una ontología de la soberanía, la ley y el conflicto: el Areópago como espacio donde la voluntad individual se enfrenta con sus formas colectivas.",
+      "Una ontología de la imputación causal, la jerarquía entre diseño y ejecución y el daño que el dolo deja sin autor visible.",
     coverUrl: "/publicaciones/libros/afrodita-areia/portada-volumen-IV.png",
     readerUrl: "/publicaciones/libros/afrodita-areia/volumen-IV",
   },
