@@ -105,6 +105,19 @@ const publications = [
     coverUrl: "/publicaciones/libros/telar-de-las-moiras/portada.png",
     readerUrl: "/publicaciones/libros/telar-de-las-moiras/telar-de-las-moiras",
   },
+  {
+    id: "reivindicacion-ontologica-del-ego-juego-de-las-mascaras",
+    title: "El juego de las máscaras",
+    subtitle: "O la disforia de la identidad",
+    volume: "Tratado ontológico",
+    author: "Miguel Hilario Olvera Aguilar",
+    year: 2026,
+    doi: "10.5281/zenodo.19601758",
+    description:
+      "Una ontología de la máscara, la disforia de la identidad, el duelo, la rendición y la recuperación del ego genuino.",
+    coverUrl: "/publicaciones/libros/juego-de-las-mascaras/portada.png",
+    readerUrl: "/publicaciones/libros/juego-de-las-mascaras/juego-de-las-mascaras",
+  },
 ];
 
 export default function Home() {
