@@ -114,7 +114,7 @@ h1, h2, h3, [id] {
 .home-slider-image {
   display: block;
   width: 100%;
-  height: clamp(220px, 38vw, 420px);
+  height: clamp(150px, 22vw, 250px);
   object-fit: cover;
 }
 
