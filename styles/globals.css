@@ -114,7 +114,8 @@ h1, h2, h3, [id] {
 .home-slider-image {
   display: block;
   width: 100%;
-  height: clamp(220px, 30vw, 340px);
+  height: auto;
+  aspect-ratio: 1672 / 941;
   object-fit: contain;
   background: #f5f5f5;
 }
