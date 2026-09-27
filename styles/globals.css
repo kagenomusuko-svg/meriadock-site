@@ -218,6 +218,46 @@ h1, h2, h3, [id] {
   margin: 40px 0;
 }
 
+.publication-carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0 10px;
+}
+
+.publication-carousel-hint {
+  margin-right: auto;
+  color: #555555;
+  font-size: 14px;
+}
+
+.publication-carousel-control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #1E4C45;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #1E4C45;
+  font-size: 23px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.publication-carousel-control:hover {
+  background: #1E4C45;
+  color: #ffffff;
+}
+
+.publication-carousel-control:focus-visible {
+  outline: 2px solid #1E4C45;
+  outline-offset: 3px;
+}
+
 .publication-card-link {
   color: inherit;
   text-decoration: none;
