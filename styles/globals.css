@@ -99,7 +99,8 @@ h1, h2, h3, [id] {
 
 .home-slider-slide {
   position: relative;
-  display: block;
+  display: flex;
+  justify-content: center;
   overflow: hidden;
   border-radius: 4px;
   background: #f5f5f5;
@@ -114,9 +115,10 @@ h1, h2, h3, [id] {
 
 .home-slider-image {
   display: block;
-  width: 100%;
+  width: 746px;
+  max-width: 100%;
   height: auto;
-  aspect-ratio: 1672 / 941;
+  max-height: 420px;
   object-fit: contain;
   background: #f5f5f5;
 }
