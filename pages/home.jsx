@@ -140,10 +140,18 @@ export default function Home() {
       <Header />
 
       <main className="home-main">
-        <section className="slider-principal">
-          <div className="slider-placeholder">
-            [Slider principal - Academia, Gaceta, Tecnología, Colabora con nosotros]
-          </div>
+        <section className="slider-principal" aria-label="Destacados">
+          <Link href="/academia" className="home-slider-slide">
+            <img
+              src="https://raw.githubusercontent.com/kagenomusuko-svg/meriadock-site/main/Slider%20Academia.png"
+              alt="Academia Meriadock"
+              className="home-slider-image"
+            />
+            <span className="home-slider-caption">
+              <strong>Academia Meriadock</strong>
+              <span>Plataforma permanente de formación</span>
+            </span>
+          </Link>
         </section>
 
         <div className="divider"></div>
