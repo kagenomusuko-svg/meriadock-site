@@ -118,28 +118,6 @@ h1, h2, h3, [id] {
   object-fit: cover;
 }
 
-.home-slider-caption {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding: 48px 28px 22px;
-  color: #ffffff;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.68), transparent);
-}
-
-.home-slider-caption strong {
-  font-size: clamp(18px, 2.4vw, 28px);
-  font-weight: 600;
-}
-
-.home-slider-caption span {
-  font-size: clamp(13px, 1.6vw, 17px);
-}
-
 .slider-placeholder {
   display: none;
 }
