@@ -1,5 +1,8 @@
 /** Archivo de configuración Next.js mínimo */
-const aqorathTechnologyOrigin = process.env.AQORATH_TECHNOLOGY_ORIGIN?.replace(/\/$/, '');
+const aqorathOrigin = (
+  process.env.AQORATH_ORIGIN ??
+  process.env.AQORATH_TECHNOLOGY_ORIGIN
+)?.replace(/\/$/, '');
 
 const nextConfig = {
   reactStrictMode: true,
@@ -64,15 +67,15 @@ const nextConfig = {
       }
     ];
 
-    if (aqorathTechnologyOrigin) {
+    if (aqorathOrigin) {
       routes.unshift(
         {
           source: '/tecnologia/aqorath',
-          destination: `${aqorathTechnologyOrigin}/tecnologia/aqorath`,
+          destination: aqorathOrigin + '/tecnologia/aqorath',
         },
         {
           source: '/tecnologia/aqorath/:path*',
-          destination: `${aqorathTechnologyOrigin}/tecnologia/aqorath/:path*`,
+          destination: aqorathOrigin + '/tecnologia/aqorath/:path*',
         }
       );
     }
