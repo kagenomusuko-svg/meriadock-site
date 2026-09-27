@@ -118,9 +118,6 @@ h1, h2, h3, [id] {
   object-fit: cover;
 }
 
-.slider-placeholder {
-  display: none;
-}
 
 /* DIVISOR */
 .divider {
