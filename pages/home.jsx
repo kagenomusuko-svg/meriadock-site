@@ -184,7 +184,7 @@ export default function Home() {
                         <span>{item.year}</span>
                         {item.doi && <span>DOI {item.doi}</span>}
                       </div>
-                      <span className="publication-action">Leer publicación →</span>
+                      
                     </div>
                   </article>
                 </Link>
