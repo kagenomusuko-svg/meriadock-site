@@ -147,10 +147,6 @@ export default function Home() {
               alt="Academia Meriadock"
               className="home-slider-image"
             />
-            <span className="home-slider-caption">
-              <strong>Academia Meriadock</strong>
-              <span>Plataforma permanente de formación</span>
-            </span>
           </Link>
         </section>
 
