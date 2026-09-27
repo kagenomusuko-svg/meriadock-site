@@ -1,7 +1,6 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Link from "next/link";
-import { useRef } from "react";
 
 const publications = [
   {
@@ -136,16 +135,6 @@ const publications = [
 ];
 
 export default function Home() {
-  const publicationTrackRef = useRef(null);
-
-  const scrollPublications = (direction) => {
-    const track = publicationTrackRef.current;
-    if (!track) return;
-
-    const step = Math.max(258, track.clientWidth - 258);
-    track.scrollBy({ left: direction * step, behavior: "smooth" });
-  };
-
   return (
     <>
       <Header />
@@ -162,28 +151,8 @@ export default function Home() {
         <section className="publications-section">
           <h2 className="section-title">Publicaciones</h2>
 
-          <div className="publication-carousel-controls" role="group" aria-label="Navegación del carrusel de publicaciones">
-            <span className="publication-carousel-hint">Explora todas las publicaciones</span>
-            <button
-              type="button"
-              className="publication-carousel-control"
-              aria-label="Publicaciones anteriores"
-              onClick={() => scrollPublications(-1)}
-            >
-              <span aria-hidden="true">←</span>
-            </button>
-            <button
-              type="button"
-              className="publication-carousel-control"
-              aria-label="Publicaciones siguientes"
-              onClick={() => scrollPublications(1)}
-            >
-              <span aria-hidden="true">→</span>
-            </button>
-          </div>
-
           <div className="carousel-container">
-            <div ref={publicationTrackRef} className="carousel-track">
+            <div className="carousel-track">
               {publications.map((item) => (
                 <Link
                   key={item.id}
