@@ -16,6 +16,7 @@
 }
 
 html, body, #__next {
+  font-size: 17px;
   height: 100%;
   background: var(--content-bg);
   color: var(--content-text);
