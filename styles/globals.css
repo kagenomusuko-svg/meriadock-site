@@ -6,6 +6,7 @@
 /* CSS variables para colores institucionales */
 :root{
   --meriadock-font-scale: 1.10;
+  font-size: calc(16px * var(--meriadock-font-scale));
   --meriadock-bg: #1E4C45;
   --meriadock-silver: #D9D9D9;
   --content-bg: #ffffff;
@@ -17,7 +18,7 @@
 }
 
 html, body, #__next {
-  font-size: 16px;
+  font-size: calc(16px * var(--meriadock-font-scale));
   height: 100%;
   background: var(--content-bg);
   color: var(--content-text);
