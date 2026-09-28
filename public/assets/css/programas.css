@@ -16,7 +16,7 @@
 /* Contenedor del contenido HTML del programa */
 .contenido-html {
     font-family: var(--meriadock-font);
-    font-size: 12pt;
+    font-size: calc(12pt * var(--meriadock-font-scale));
     line-height: 1.5;
     color: #000000;
     margin-bottom: 40px; /* espacio inferior al final del contenido */
@@ -24,20 +24,20 @@
 
 /* Títulos dentro del contenido */
 .contenido-html h1 {
-    font-size: 14pt;
+    font-size: calc(14pt * var(--meriadock-font-scale));
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .contenido-html h2 {
-    font-size: 12pt;
+    font-size: calc(12pt * var(--meriadock-font-scale));
     font-weight: bold;
     margin-top: 20px;
     margin-bottom: 5px;
 }
 
 .contenido-html h3 {
-    font-size: 11pt;
+    font-size: calc(11pt * var(--meriadock-font-scale));
     font-weight: bold;
     margin-top: 15px;
     margin-bottom: 5px;
