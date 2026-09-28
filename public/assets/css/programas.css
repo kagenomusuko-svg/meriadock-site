@@ -1,5 +1,6 @@
 :root {
   --meriadock-font-scale: 1.10;
+  font-size: calc(16px * var(--meriadock-font-scale));
 }
 
 @import url("/assets/css/globals.css");
