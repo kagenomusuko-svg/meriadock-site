@@ -1,3 +1,7 @@
+:root {
+  --meriadock-font-scale: 1.06;
+}
+
 @import url("/assets/css/globals.css");
 
 /* ==========================
