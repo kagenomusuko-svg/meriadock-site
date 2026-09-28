@@ -5,7 +5,7 @@
 ========================= */
 body {
   font-family: var(--meriadock-font);
-  font-size: 12pt;
+  font-size: calc(12pt * var(--meriadock-font-scale));
   color: #000000;
   line-height: 1.5;
   margin: 20px;
@@ -20,9 +20,9 @@ h1, h2, h3, h4, h5, h6 {
   color: #000000;
 }
 
-h1 { font-size: 14pt; }
-h2 { font-size: 13pt; }
-h3 { font-size: 12.5pt; }
+h1 { font-size: calc(14pt * var(--meriadock-font-scale)); }
+h2 { font-size: calc(13pt * var(--meriadock-font-scale)); }
+h3 { font-size: calc(12.5pt * var(--meriadock-font-scale)); }
 
 /* =========================
    Texto
