@@ -1,5 +1,6 @@
 :root {
   --meriadock-font-scale: 1.10;
+  font-size: calc(16px * var(--meriadock-font-scale));
 }
 
 /* Añade estas reglas (ó integra en tu hoja principal) */
@@ -51,19 +52,19 @@
 /* Nombre y tagline */
 .ac-name {
   margin: 0;
-  font-size: calc(1.1rem * var(--meriadock-font-scale));
+  font-size: 1.1rem;
   color: inherit;
 }
 .ac-tagline {
   margin: 4px 0 0 0;
   font-style: italic;
-  font-size: calc(0.95rem * var(--meriadock-font-scale));
+  font-size: 0.95rem;
   color: #cfcfcf;
 }
 
 /* Menús en footer (mismo comportamiento que header) */
 .footer-menus { display:flex; gap:32px; }
-.footer-menu-column h4 { margin:0 0 8px 0; font-size:calc(0.95rem * var(--meriadock-font-scale)); }
+.footer-menu-column h4 { margin:0 0 8px 0; font-size:0.95rem; }
 .footer-menu-column .menu { list-style:none; padding:0; margin:0; }
 .footer-menu-column .menu li { margin:6px 0; }
 .footer-menu-column .menu a { color:inherit; text-decoration:none; opacity:0.95; }
