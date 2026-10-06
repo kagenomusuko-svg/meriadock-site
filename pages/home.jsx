@@ -151,7 +151,7 @@ const publications = [
     id: "contrato-fiscal-eris",
     title: "El Contrato Fiscal",
     subtitle: "Eris",
-    volume: "Auditoría histórica y comparada",
+    volume: "Tratado ontológico",
     author: "Miguel Hilario Olvera Aguilar",
     year: 2026,
     doi: "10.5281/zenodo.23198619",
