@@ -3,20 +3,7 @@ import Footer from "../components/Footer";
 import Link from "next/link";
 
 const publications = [
-  {
-    id: "contrato-fiscal-kratos",
-    title: "El Contrato Fiscal",
-    subtitle: "Kratos",
-    volume: "Volumen I",
-    author: "Miguel Hilario Olvera Aguilar",
-    year: 2026,
-    doi: "10.5281/zenodo.23173189",
-    description:
-      "Estudia la vida del contrato fiscal como estructura ontológica de la relación entre el soberano y el Estado: su renovación, sus umbrales de deterioro, las formas de captura y las vías de exigencia y restauración de la segunda mediación colectiva.",
-    coverUrl:
-      "/covers/kratos.jpg",
-    readerUrl: "https://doi.org/10.5281/zenodo.23173189",
-  },
+
   {
     id: "reivindicacion-ontologica-del-ego-caos",
     title: "Caos",
@@ -145,6 +132,20 @@ const publications = [
       "Una ontología de la máscara, la disforia de la identidad, el duelo, la rendición y la recuperación del ego genuino.",
     coverUrl: "/publicaciones/libros/juego-de-las-mascaras/portada.png",
     readerUrl: "/publicaciones/libros/juego-de-las-mascaras/juego-de-las-mascaras",
+  },
+  {
+    id: "contrato-fiscal-kratos",
+    title: "El Contrato Fiscal",
+    subtitle: "Kratos",
+    volume: "Tratado ontológico",
+    author: "Miguel Hilario Olvera Aguilar",
+    year: 2026,
+    doi: "10.5281/zenodo.23173189",
+    description:
+      "Estudia la vida del contrato fiscal como estructura ontológica de la relación entre el soberano y el Estado: su renovación, sus umbrales de deterioro, las formas de captura y las vías de exigencia y restauración de la segunda mediación colectiva.",
+    coverUrl:
+      "/covers/kratos.jpg",
+    readerUrl: "https://doi.org/10.5281/zenodo.23173189",
   },
 
 ];
