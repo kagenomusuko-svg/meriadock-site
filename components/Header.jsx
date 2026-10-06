@@ -252,6 +252,11 @@ export default function Header() {
                         Aqorath
                       </Link>
                     </li>
+                    <li>
+                      <Link href="/tecnologia/Prometeo" className="block px-3 py-1 text-white">
+                        Prometeo
+                      </Link>
+                    </li>
                   </ul>
                 )}
               </li>
@@ -397,6 +402,15 @@ function MobileMenu() {
                         onClick={() => setOpen(false)}
                       >
                         Aqorath
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/tecnologia/Prometeo"
+                        className="flex min-h-[44px] items-center px-9 text-[#374151] transition-colors hover:text-[#1E4C45] focus-visible:text-[#1E4C45] focus-visible:outline-none"
+                        onClick={() => setOpen(false)}
+                      >
+                        Prometeo
                       </Link>
                     </li>
                   </ul>
