@@ -145,7 +145,7 @@ const publications = [
       "Estudia la vida del contrato fiscal como estructura ontológica de la relación entre el soberano y el Estado: su renovación, sus umbrales de deterioro, las formas de captura y las vías de exigencia y restauración de la segunda mediación colectiva.",
     coverUrl:
       "/covers/kratos.jpg",
-    readerUrl: "https://doi.org/10.5281/zenodo.23173189",
+    readerUrl: "/publicaciones/libros/contrato-fiscal-kratos/kratos",
   },
 
 ];
