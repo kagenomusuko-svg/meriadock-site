@@ -147,6 +147,19 @@ const publications = [
       "/covers/kratos.jpg",
     readerUrl: "/publicaciones/libros/contrato-fiscal-kratos/kratos",
   },
+  {
+    id: "contrato-fiscal-eris",
+    title: "El Contrato Fiscal",
+    subtitle: "Eris",
+    volume: "Auditoría histórica y comparada",
+    author: "Miguel Hilario Olvera Aguilar",
+    year: 2026,
+    doi: "10.5281/zenodo.23198619",
+    description:
+      "Una auditoría histórica y comparada del contractualismo, el liberalismo, el materialismo histórico, la anarquía y la revolución.",
+    coverUrl: "/covers/eris.svg",
+    readerUrl: "/publicaciones/libros/contrato-fiscal-eris/eris",
+  },
 
 ];
 
