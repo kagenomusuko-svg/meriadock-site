@@ -26,6 +26,15 @@ const nextConfig = {
   async rewrites() {
     const routes = [
       {
+        source: '/tecnologia/Prometeo',
+        destination: 'https://www.prometeo.meriadock.org.mx/tecnologia/Prometeo',
+      },
+      {
+        source: '/tecnologia/Prometeo/:path*',
+        destination: 'https://www.prometeo.meriadock.org.mx/tecnologia/Prometeo/:path*',
+      },
+
+      {
         source: '/academia',
         destination: 'https://meriadock-academy-six.vercel.app/academia',
       },
