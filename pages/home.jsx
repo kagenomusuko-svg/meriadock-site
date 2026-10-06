@@ -157,7 +157,8 @@ const publications = [
     doi: "10.5281/zenodo.23198619",
     description:
       "Una auditoría histórica y comparada del contractualismo, el liberalismo, el materialismo histórico, la anarquía y la revolución.",
-    coverUrl: "/covers/eris.svg",
+    coverUrl:
+      "https://raw.githubusercontent.com/kagenomusuko-svg/publicaciones/main/contrato-fiscal/Eris/Portada.png",
     readerUrl: "/publicaciones/libros/contrato-fiscal-eris/eris",
   },
 
