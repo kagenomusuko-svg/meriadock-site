@@ -27,11 +27,11 @@ const nextConfig = {
     const routes = [
       {
         source: '/tecnologia/Prometeo',
-        destination: 'https://www.prometeo.meriadock.org.mx/tecnologia/Prometeo',
+        destination: 'https://prometeo-hilario-olveras-projects.vercel.app/tecnologia/Prometeo',
       },
       {
         source: '/tecnologia/Prometeo/:path*',
-        destination: 'https://www.prometeo.meriadock.org.mx/tecnologia/Prometeo/:path*',
+        destination: 'https://prometeo-hilario-olveras-projects.vercel.app/tecnologia/Prometeo/:path*',
       },
 
       {
