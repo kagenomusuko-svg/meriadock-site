@@ -182,53 +182,6 @@ export default function Home() {
 
         <div className="divider"></div>
 
-        <section className="publications-section">
-          <h2 className="section-title">Publicaciones</h2>
-
-          <div className="carousel-container">
-            <div className="carousel-track">
-              {publications.map((item) => (
-                <Link
-                  key={item.id}
-                  href={item.readerUrl}
-                  className="publication-card-link"
-                  aria-label={`Leer ${item.title}: ${item.subtitle}`}
-                >
-                  <article className="publication-card">
-                    <div className="publication-cover-wrap">
-                      <img
-                        src={item.coverUrl}
-                        alt={`Portada de ${item.title}: ${item.subtitle}`}
-                        className={`publication-cover${
-                          item.id === "reivindicacion-ontologica-del-ego-telar-de-las-moiras"
-                            ? " publication-cover-telar"
-                            : ""
-                        }`}
-                        loading="lazy"
-                      />
-                    </div>
-
-                    <div className="publication-card-content">
-                      <span className="publication-volume">{item.volume}</span>
-                      <h4>{item.title}</h4>
-                      <p className="publication-subtitle">{item.subtitle}</p>
-                      <p className="publication-description">{item.description}</p>
-                      <div className="publication-meta">
-                        <span>{item.author}</span>
-                        <span>{item.year}</span>
-                        {item.doi && <span>DOI {item.doi}</span>}
-                      </div>
-                      
-                    </div>
-                  </article>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <div className="divider"></div>
-
         <section className="about-section">
           <div className="about-grid">
             <div className="about-column">
@@ -279,6 +232,54 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <div className="divider"></div>
+
+        <section className="publications-section">
+          <h2 className="section-title">Publicaciones</h2>
+
+          <div className="carousel-container">
+            <div className="carousel-track">
+              {publications.map((item) => (
+                <Link
+                  key={item.id}
+                  href={item.readerUrl}
+                  className="publication-card-link"
+                  aria-label={`Leer ${item.title}: ${item.subtitle}`}
+                >
+                  <article className="publication-card">
+                    <div className="publication-cover-wrap">
+                      <img
+                        src={item.coverUrl}
+                        alt={`Portada de ${item.title}: ${item.subtitle}`}
+                        className={`publication-cover${
+                          item.id === "reivindicacion-ontologica-del-ego-telar-de-las-moiras"
+                            ? " publication-cover-telar"
+                            : ""
+                        }`}
+                        loading="lazy"
+                      />
+                    </div>
+
+                    <div className="publication-card-content">
+                      <span className="publication-volume">{item.volume}</span>
+                      <h4>{item.title}</h4>
+                      <p className="publication-subtitle">{item.subtitle}</p>
+                      <p className="publication-description">{item.description}</p>
+                      <div className="publication-meta">
+                        <span>{item.author}</span>
+                        <span>{item.year}</span>
+                        {item.doi && <span>DOI {item.doi}</span>}
+                      </div>
+                      
+                    </div>
+                  </article>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
       </main>
 
       <Footer />
