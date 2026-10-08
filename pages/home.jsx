@@ -134,6 +134,20 @@ const publications = [
     readerUrl: "/publicaciones/libros/juego-de-las-mascaras/juego-de-las-mascaras",
   },
   {
+    id: "esclavitud-por-alineacion",
+    title: "La esclavitud por alineación",
+    subtitle: "",
+    volume: "Tratado ontológico",
+    author: "Miguel Hilario Olvera Aguilar",
+    year: 2026,
+    doi: "10.5281/zenodo.23249086",
+    description:
+      "Examina cómo los marcos de inteligibilidad y legitimidad pueden convertir el reconocimiento en una condición de ajuste y clausurar la posibilidad de disputar sus criterios.",
+    coverUrl: "/publicaciones/libros/esclavitud-por-alineacion/portada.png",
+    readerUrl: "/publicaciones/libros/esclavitud-por-alineacion/esclavitud-por-alineacion",
+  },
+
+  {
     id: "contrato-fiscal-kratos",
     title: "El Contrato Fiscal",
     subtitle: "Kratos",
