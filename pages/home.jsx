@@ -30,6 +30,18 @@ const publications = [
     readerUrl: "/publicaciones/libros/afrodita-areia/volumen-I",
   },
   {
+    id: "afrodita-areia-volumen-I",
+    title: "Afrodita Areia",
+    subtitle: "Sobre la pasión",
+    volume: "Volumen I",
+    author: "Miguel Hilario Olvera Aguilar",
+    year: 2026,
+    description:
+      "Una ontología materialista de la determinación que piensa la pasión como fuerza anterior al sujeto consciente y recorre su desarrollo desde el caos hasta el ego.",
+    coverUrl: "/publicaciones/libros/afrodita-areia/portada.png",
+    readerUrl: "/publicaciones/libros/afrodita-areia/volumen-I",
+  },
+  {
     id: "afrodita-areia-volumen-II",
     title: "Afrodita Areia",
     subtitle: "Ágape",
