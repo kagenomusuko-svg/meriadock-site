@@ -207,8 +207,13 @@ export default function Home() {
   const movePublications = (direction) => {
     const track = publicationTrackRef.current;
     if (!track) return;
+    const firstCard = track.querySelector(".publication-card-link");
+    if (!firstCard) return;
+
+    const cardWidth = firstCard.getBoundingClientRect().width;
+    const gap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
     track.scrollBy({
-      left: direction * track.clientWidth * 0.8,
+      left: direction * (cardWidth + gap),
       behavior: "smooth",
     });
   };
