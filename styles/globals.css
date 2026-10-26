@@ -235,39 +235,71 @@ h1, h2, h3, [id] {
   margin: 40px 0;
 }
 
-.publication-carousel-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 16px 0 10px;
-}
-
-.publication-carousel-hint {
-  margin-right: auto;
-  color: #555555;
-  font-size: calc(14px * var(--meriadock-font-scale));
+.publication-carousel-container {
+  --publication-control-size: 44px;
 }
 
 .publication-carousel-control {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: var(--publication-control-size);
+  height: var(--publication-control-size);
   padding: 0;
-  border: 1px solid #1E4C45;
-  border-radius: 4px;
-  background: #ffffff;
+  border: 1px solid rgba(30, 76, 69, 0.18);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.96);
   color: #1E4C45;
-  font-size: calc(23px * var(--meriadock-font-scale));
-  line-height: 1;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transform: translateY(-50%);
+  transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
 }
 
-.publication-carousel-control:hover {
+.publication-carousel-control-left {
+  left: 12px;
+}
+
+.publication-carousel-control-right {
+  right: 12px;
+}
+
+.publication-carousel-control svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.publication-carousel-control:hover:not(:disabled) {
   background: #1E4C45;
   color: #ffffff;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.22);
+}
+
+.publication-carousel-control:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.publication-carousel-control:focus-visible {
+  outline: 2px solid #1E4C45;
+  outline-offset: 3px;
+}
+
+.publication-carousel-track {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.publication-carousel-track::-webkit-scrollbar {
+  display: none;
 }
 
 .publication-carousel-control:focus-visible {
@@ -458,6 +490,10 @@ h1, h2, h3, [id] {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  .publication-carousel-control {
+    display: none;
+  }
+
   .home-main {
     padding: 0 16px;
   }

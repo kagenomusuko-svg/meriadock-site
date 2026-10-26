@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 const publications = [
 
@@ -179,6 +180,39 @@ const publications = [
 ];
 
 export default function Home() {
+  const publicationTrackRef = useRef(null);
+  const [publicationScroll, setPublicationScroll] = useState({ canScrollLeft: false, canScrollRight: true });
+
+  useEffect(() => {
+    const track = publicationTrackRef.current;
+    if (!track) return undefined;
+
+    const updateControls = () => {
+      const maxScrollLeft = track.scrollWidth - track.clientWidth;
+      setPublicationScroll({
+        canScrollLeft: track.scrollLeft > 1,
+        canScrollRight: maxScrollLeft - track.scrollLeft > 1,
+      });
+    };
+
+    updateControls();
+    track.addEventListener("scroll", updateControls, { passive: true });
+    window.addEventListener("resize", updateControls);
+    return () => {
+      track.removeEventListener("scroll", updateControls);
+      window.removeEventListener("resize", updateControls);
+    };
+  }, []);
+
+  const movePublications = (direction) => {
+    const track = publicationTrackRef.current;
+    if (!track) return;
+    track.scrollBy({
+      left: direction * track.clientWidth * 0.8,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <Header />
@@ -252,8 +286,35 @@ export default function Home() {
         <section className="publications-section">
           <h2 className="section-title">Publicaciones</h2>
 
-          <div className="carousel-container">
-            <div className="carousel-track">
+          <div className="carousel-container publication-carousel-container">
+            <button
+              type="button"
+              className="publication-carousel-control publication-carousel-control-left"
+              aria-label="Desplazar publicaciones a la izquierda"
+              onClick={() => movePublications(-1)}
+              disabled={!publicationScroll.canScrollLeft}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              className="publication-carousel-control publication-carousel-control-right"
+              aria-label="Desplazar publicaciones a la derecha"
+              onClick={() => movePublications(1)}
+              disabled={!publicationScroll.canScrollRight}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+            <div
+              className="carousel-track publication-carousel-track"
+              ref={publicationTrackRef}
+              tabIndex={0}
+              aria-label="Carrusel de publicaciones"
+            >
               {publications.map((item) => (
                 <Link
                   key={item.id}
