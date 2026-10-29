@@ -76,6 +76,7 @@ const publications = [
     volume: "Volumen V",
     author: "Miguel Hilario Olvera Aguilar",
     year: 2026,
+    doi: "10.5281/zenodo.19601228",
     description:
       "Una teoría de escalas sobre el Estado, la soberanía, el contrato fiscal y la emergencia de la voluntad colectiva.",
     coverUrl: "/publicaciones/libros/afrodita-areia/portada-volumen-V.png",
